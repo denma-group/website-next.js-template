@@ -3,15 +3,25 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import App, { Container } from 'next/app';
 import Router from 'next/router';
-import Link from 'next/link';
 import NProgress from 'nprogress';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 // CSS styled-components app theme
 import { mainTheme as theme } from 'static/theme/index';
 
-const linkStyle = {
-  margin: '0 10px 0 0'
-};
+// Dependencies
+import userAgent from 'src/utils/userAgent';
+
+// Components
+import {
+  Footer,
+  Navbar,
+  NavbarProvider,
+  PageWrapper
+} from 'src/layout/UI';
+
+// Styles
+import 'static/theme/index.scss';
 
 /**
  * Event listener for route changes.
@@ -28,10 +38,24 @@ export default class MyApp extends App {
     let pageProps = {};
 
     if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
+      pageProps = await {
+        ...Component.getInitialProps(ctx)
+      };
     }
 
+    // Determining if the user is on a mobile device.
+    const isMobile = await userAgent(ctx && ctx.req.headers['user-agent']);
+    pageProps.isMobile = isMobile;
+
     return { pageProps };
+  }
+
+  componentDidMount() {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles) {
+      jssStyles.parentNode.removeChild(jssStyles);
+    }
   }
 
   render() {
@@ -40,21 +64,16 @@ export default class MyApp extends App {
       <Container>
         <ThemeProvider theme={theme}>
           <React.Fragment>
-            <div style={{ marginBottom: 20 }}>
-              <Link href="/">
-                <a style={linkStyle}>Home</a>
-              </Link>
-              <Link href="/about">
-                <a style={linkStyle}>About</a>
-              </Link>
-              <Link href="/forever">
-                <a style={linkStyle}>Forever</a>
-              </Link>
-              <a href="/non-existing" style={linkStyle}>
-                Non Existing Page
-              </a>
-            </div>
-            <Component {...pageProps} />
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            {/* Website */}
+            <NavbarProvider>
+              <Navbar />
+              <PageWrapper>
+                <Component {...pageProps} />
+              </PageWrapper>
+              <Footer />
+            </NavbarProvider>
           </React.Fragment>
         </ThemeProvider>
       </Container>
