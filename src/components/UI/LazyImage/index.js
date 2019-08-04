@@ -49,7 +49,7 @@ class LazyImage extends Component {
     width: undefined,
     height: undefined,
     objectFit: undefined,
-    offset: undefined,
+    offset: 0,
     src: undefined,
     alt: undefined
   }
