@@ -63,7 +63,7 @@ const Footer = props => (
           <StyledH6>
             Denma
           </StyledH6>
-          <StyledSubtitle>
+          <StyledSubtitle color="whiteColor">
             Your vision. Developed.
           </StyledSubtitle>
           <Typography
