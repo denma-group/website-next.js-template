@@ -11,6 +11,10 @@ import { useOnScrollBgColor } from 'src/utils/hooks/useOnScrollBgColor';
 
 // Components
 import ReactResizeDetector from 'react-resize-detector';
+import {
+  Row,
+  Col,
+} from 'src/components/Layout';
 import { NavbarContext } from 'src/layout/UI/Navbar';
 import { Parallax } from 'src/components/UI';
 import {
@@ -128,7 +132,7 @@ const Homepage = props => {
           }}
         />
         <HeroWrapper>
-          <Container
+          <Row
             height={totalScreenHeight - 64}
           >
             <Parallax speed={0.5}>
@@ -140,9 +144,9 @@ const Homepage = props => {
                 />
               </LogoContainer>
             </Parallax>
-          </Container>
+          </Row>
         </HeroWrapper>
-        <Container
+        <Row
           height={totalScreenHeight}
           styledCss={
             css`
@@ -155,26 +159,26 @@ const Homepage = props => {
               padding: 0 40px;
               background-color: transparent;
             `}
-          ref={valuePropositionRef}
+          innerRef={valuePropositionRef}
         >
           <StyledHeroValueProposition variant="h1">
             For companies who find themselves in need of <span>high-quality</span> software applications, <span>Denma</span> is a software development studio that provides personalized services with a solid methodology to <span>help</span> companies take their businesses to the <span>next level</span>.
           </StyledHeroValueProposition>
-        </Container>
+        </Row>
         {/* LINKS */}
-        <Container
+        <Row
           height={totalScreenHeight}
         >
           <HelpYourBusiness />
-        </Container>
+        </Row>
         {/* DIVIDER */}
-        <Container
+        <Row
           height={totalScreenHeight * 0.5}
         >
           <BackgroundAttachedDiv />
-        </Container>
+        </Row>
         {/* HERO-SLIDER */}
-        <Container
+        <Row
           height={0.9 * (totalScreenHeight - 64)}
         >
           <HeroSlider
@@ -189,23 +193,17 @@ const Homepage = props => {
               color: '#FFF'
             }}
           />
-        </Container>
+        </Row>
         {/* SUBSCRIBE TO US FORM */}
-        <Container
+        <Row
           height="auto"
         >
           <SubscribeForm />
-        </Container>
+        </Row>
       </StyledPageWrapper>
     </ActiveSlideThemeProvider>
   ), [totalScreenHeight, valuePropositionRef, isMobile]);
 };
-
-const Container = styled.div`
-  position: relative;
-  height: ${props => props.height}px;
-  ${({ styledCss }) => styledCss};
-`;
 
 Homepage.propTypes = {
   isMobile: PropTypes.bool.isRequired,
