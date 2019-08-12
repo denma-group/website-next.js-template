@@ -78,6 +78,7 @@ const StyledH3 = styled(H3)`
 const StyledH6 = styled(H6)`
   &&& {
     ${({ css }) => css};
+    color: ${({ theme, color }) => theme[color] || theme.secondary};
     /* TODO: screen size changes */
   }
 `;
