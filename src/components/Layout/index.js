@@ -15,6 +15,7 @@ const StyledRow = styled(({ height, styledCss, ...rest }) => <Grid {...rest} />)
 const Row = props => (
   <StyledRow
     {...props}
+    container
   />
 );
 

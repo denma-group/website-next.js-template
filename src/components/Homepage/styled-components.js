@@ -44,11 +44,11 @@ export const LogoContainer = styled.div`
 `;
 
 export const StyledLogo = styled(ResponsiveLogo)`
-  margin: 72px auto;
+  margin: 0 auto 72px;
   width: 75%;
 
   @media (max-width: ${({ theme }) => theme.screenXl}) {
-    margin: 12px auto 24px;
+    margin: -120px auto 24px;
   }
 `;
 
