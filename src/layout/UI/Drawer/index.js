@@ -203,6 +203,6 @@ const StyledListHeader = styled(Typography)`
     text-decoration: none;
     user-select: none;
   }
-}`;
+`;
 
 export default NavbarDrawer;

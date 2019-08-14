@@ -14,9 +14,13 @@ import Logo from 'src/components/SVG/Logos/DenmaHorizontal_NM';
 // Dependencies
 import Provider, { NavbarContext as Context } from './context';
 
+// Links
+import { links, getShouldRenderDrawerIcon, renderNavLinks } from './links';
+
 // Navbar React Context exports
 export const NavbarContext = Context;
 export const NavbarProvider = Provider;
+
 
 const Navbar = () => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
@@ -29,6 +33,9 @@ const Navbar = () => {
   const [boxShadow] = navbarContext.boxShadowState;
   const [transform] = navbarContext.transformState;
   const [styledCss] = navbarContext.cssState;
+
+  const shouldRenderDrawerIcon = getShouldRenderDrawerIcon(links);
+  console.log('shouldRenderDrawerIcon', shouldRenderDrawerIcon);
 
   return (
     <React.Fragment>
@@ -51,14 +58,16 @@ const Navbar = () => {
             />
           </a>
           <div className="spacing" />
-          <Button color="inherit">Contact us</Button>
-          <IconButton
-            color="inherit"
-            aria-label="Menu"
-            onClick={() => setDrawerOpen(!isDrawerOpen)}
-          >
-            <MenuIcon />
-          </IconButton>
+          {renderNavLinks(links)}
+          {/* {shouldRenderDrawerIcon && ( */}
+            <IconButton
+              color="inherit"
+              aria-label="Menu"
+              onClick={() => setDrawerOpen(!isDrawerOpen)}
+            >
+              <MenuIcon />
+            </IconButton>
+          {/* )} */}
         </Toolbar>
       </StyledAppBar>
       <Drawer
