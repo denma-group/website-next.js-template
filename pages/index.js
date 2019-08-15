@@ -1,7 +1,7 @@
 // Libraries
 import React, { useContext, useState, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
-import styled, { css, withTheme } from 'styled-components';
+import { css, withTheme } from 'styled-components';
 
 // Icons
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';

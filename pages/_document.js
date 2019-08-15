@@ -28,7 +28,6 @@ export default class MyDocument extends Document {
     // 3. app.render
     // 4. page.render
 
-
     // Render app and page and get the context of the page with collected side effects.
     const styledComponentSheet = new StyledComponentsServerStyleSheet();
     const materialUiSheets = new MuiServerStyleSheets();

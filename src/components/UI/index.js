@@ -1,13 +1,13 @@
 // Libraries
+import DropdownMenu from './DropdownMenu';
 import LazyImage from './LazyImage';
-import LazyImport from './LazyImport';
 import Loader from './Loader';
 import LogoLoader from './LogoLoader';
 import Parallax from './Parallax';
 
 export {
+  DropdownMenu,
   LazyImage,
-  LazyImport,
   Loader,
   LogoLoader,
   Parallax

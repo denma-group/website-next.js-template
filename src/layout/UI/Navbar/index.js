@@ -5,11 +5,10 @@ import styled, { css } from 'styled-components';
 // Components
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import Drawer from 'src/layout/UI/Drawer';
-import Logo from 'src/components/SVG/Logos/DenmaHorizontal_NM';
+import { Drawer } from 'src/layout/UI';
+import { NavbarLogo, Spacing } from './components';
 
 // Dependencies
 import Provider, { NavbarContext as Context } from './context';
@@ -21,6 +20,21 @@ import { links, getShouldRenderDrawerIcon, renderNavLinks } from './links';
 export const NavbarContext = Context;
 export const NavbarProvider = Provider;
 
+const navbarLogo = (
+  <NavbarLogo
+    alt="Denma Home"
+    title="Denma Home"
+    focusable="false"
+  />
+);
+
+const drawerLogo = (
+  <NavbarLogo
+    alt="Denma Home"
+    title="Denma Home"
+    focusable="false"
+  />
+);
 
 const Navbar = () => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
@@ -35,7 +49,6 @@ const Navbar = () => {
   const [styledCss] = navbarContext.cssState;
 
   const shouldRenderDrawerIcon = getShouldRenderDrawerIcon(links);
-  console.log('shouldRenderDrawerIcon', shouldRenderDrawerIcon);
 
   return (
     <React.Fragment>
@@ -51,11 +64,7 @@ const Navbar = () => {
       >
         <Toolbar>
           <a role="button">
-            <StyledLogo
-              alt="Denma Home"
-              title="Denma Home"
-              focusable="false"
-            />
+            {navbarLogo}
           </a>
           <div className="spacing" />
           {renderNavLinks(links)}
@@ -64,6 +73,7 @@ const Navbar = () => {
               color="inherit"
               aria-label="Menu"
               onClick={() => setDrawerOpen(!isDrawerOpen)}
+              className="menu-button"
             >
               <MenuIcon />
             </IconButton>
@@ -74,6 +84,8 @@ const Navbar = () => {
         anchor="right"
         open={isDrawerOpen}
         closeDrawer={() => setDrawerOpen(false)}
+        drawerLogo={drawerLogo}
+        links={links}
       />
     </React.Fragment>
   );
@@ -97,17 +109,14 @@ const StyledAppBar = styled(({ color, backgroundColor, opacity, boxShadow, trans
     )}
     ${props => (props.styledCss && props.styledCss)}
     transition: all ease 150ms;
+    transition-property: color, background-color, opacity;
 
     .spacing {
       flex-grow: 1;
     }
 
-    button:first-of-type {
-      margin-left: -12px;
-      margin-right: 20px;
-    }
-
-    button:last-of-type {
+    .menu-button {
+      margin-left: 20px;
       float: right;
     }
 
@@ -116,34 +125,6 @@ const StyledAppBar = styled(({ color, backgroundColor, opacity, boxShadow, trans
       background-color: rgba(255, 255, 255, 0.08);
     }
   }
-`;
-
-const StyledLogo = styled(Logo)`
-  width: 100%;
-  height: auto;
-  max-width: 225px;
-  cursor: pointer;
-
-  @media (min-width: 600px) {
-    max-width: 225px !important;
-  }
-
-  @media (min-width: 0px) and (orientation: landscape) {
-    max-width: 150px;
-  }
-  max-width: 125px;
-`;
-
-const Spacing = styled.div`
-  background: transparent;
-  @media (min-width: 600px) {
-    min-height: 64px !important;
-  }
-
-  @media (min-width: 0px) and (orientation: landscape) {
-    min-height: 48px;
-  }
-  min-height: 56px;
 `;
 
 export default Navbar;
