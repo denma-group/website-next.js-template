@@ -40,6 +40,9 @@ const StyledLogo = styled(Logo)`
     height: auto;
     max-width: 225px;
     cursor: pointer;
+    @media (max-width: 600px) {
+      max-width: 150px !important;
+    }
 `;
 
 const StyledDrawerLogo = styled(StyledLogo)`

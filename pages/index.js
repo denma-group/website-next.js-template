@@ -33,7 +33,10 @@ import {
 const Homepage = props => {
   const { theme, isMobile } = props;
   const navbarContext = useContext(NavbarContext);
-  const setNavbarCss = navbarContext.cssState[1];
+  const [, setNavbarColor] = navbarContext.colorState;
+  const [, setNavbaBgColor] = navbarContext.backgroundColorState;
+  const [, setOpacityState] = navbarContext.opacityState;
+  const [, setBoxShadowState] = navbarContext.boxShadowState;
 
   const [totalScreenHeight, setTotalScrenHeight] = useState(0);
 
@@ -58,38 +61,30 @@ const Homepage = props => {
     switch (true) {
       case currentScrollHeight <= BRACKET_2_HEIGHT:
         // Show Navbar
-        setNavbarCss(css`
-          opacity: ${opacityRatio};
-          color: ${theme.whiteColor};
-          background-color: transparent;
-        `);
+        setNavbarColor(theme.whiteColor);
+        setNavbaBgColor('transparent');
+        setOpacityState(opacityRatio);
         break;
       case currentScrollHeight <= BRACKET_3_HEIGHT:
          // Partially hide Navbar
-        setNavbarCss(css`
-          opacity: ${opacityRatio};
-          color: ${theme.whiteColor};
-          background-color: transparent;
-          box-shadow: none;
-        `);
+        setNavbarColor(theme.whiteColor);
+        setNavbaBgColor('transparent');
+        setOpacityState(opacityRatio);
+        setBoxShadowState('none');
         break;
       case currentScrollHeight <= BRACKET_4_HEIGHT:
         // Hide Navbar
-        setNavbarCss(css`
-          opacity: ${0};
-          color: ${theme.whiteColor};
-          background-color: transparent;
-          box-shadow: none;
-        `);
+        setNavbarColor(theme.whiteColor);
+        setNavbaBgColor('transparent');
+        setOpacityState(0);
+        setBoxShadowState('none');
         break;
       case currentScrollHeight >= BRACKET_5_HEIGHT:
       default:
         // Show Navbar
-        setNavbarCss(css`
-          opacity: ${1 - opacityRatio};
-          color: ${theme.brandLightBlack};
-          background-color: ${theme.whiteColor};
-        `);
+        setNavbarColor(theme.brandLightBlack);
+        setNavbaBgColor(theme.whiteColor);
+        setOpacityState(1 - opacityRatio);
         break;
     }
   };

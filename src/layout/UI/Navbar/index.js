@@ -49,6 +49,7 @@ const Navbar = () => {
   const [styledCss] = navbarContext.cssState;
 
   const shouldRenderDrawerIcon = getShouldRenderDrawerIcon(links);
+  console.log('shouldRenderDrawerIcon', shouldRenderDrawerIcon);
 
   return (
     <React.Fragment>
@@ -68,16 +69,15 @@ const Navbar = () => {
           </a>
           <div className="spacing" />
           {renderNavLinks(links)}
-          {/* {shouldRenderDrawerIcon && ( */}
-            <IconButton
-              color="inherit"
-              aria-label="Menu"
-              onClick={() => setDrawerOpen(!isDrawerOpen)}
-              className="menu-button"
-            >
-              <MenuIcon />
-            </IconButton>
-          {/* )} */}
+          <StyledIconButton
+            color="inherit"
+            aria-label="Menu"
+            onClick={() => setDrawerOpen(!isDrawerOpen)}
+            className="menu-button"
+            shouldRenderDrawerIcon={shouldRenderDrawerIcon}
+          >
+            <MenuIcon />
+          </StyledIconButton>
         </Toolbar>
       </StyledAppBar>
       <Drawer
@@ -124,7 +124,34 @@ const StyledAppBar = styled(({ color, backgroundColor, opacity, boxShadow, trans
       text-decoration: none;
       background-color: rgba(255, 255, 255, 0.08);
     }
+
+    ${({ theme }) => css`
+      .MuiToolbar-root > .MuiButtonBase-root:not(.menu-button),
+      .MuiToolbar-root > .dropdown-menu {
+        @media (min-width: ${theme.screenLg}) {
+          display: inline-flex;
+        }
+
+        @media (min-width: 0px) and (max-width: ${theme.screenLg}) {
+          display: none;
+        }
+      }
+    `}
   }
+`;
+
+const StyledIconButton = styled(({ shouldRenderDrawerIcon, ...rest }) => <IconButton {...rest} />)`
+  ${({ theme, shouldRenderDrawerIcon }) => css`
+    &&& {
+      @media (min-width: ${theme.screenLg}) {
+        display: ${shouldRenderDrawerIcon ? 'inline-flex' : 'none'};
+      }
+
+      @media (min-width: 0px) and (max-width: ${theme.screenLg}) {
+        display: inline-flex;
+      }
+    }
+  `}
 `;
 
 export default Navbar;

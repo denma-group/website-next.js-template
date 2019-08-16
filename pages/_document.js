@@ -60,10 +60,7 @@ export default class MyDocument extends Document {
   render() {
     return (
       <html lang="en">
-        <Head>
-          {/* Import CSS for nprogress */}
-          <link rel="stylestyledComponentSheet" type="text/css" href="/static/nprogress.css" />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />

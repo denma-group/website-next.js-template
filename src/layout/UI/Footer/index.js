@@ -51,7 +51,7 @@ const Footer = props => (
           <StyledH6>
             More
           </StyledH6>
-          <a href="/link" className="link">Link</a>
+          <a href="/" className="link">Home</a>
           <a href="/link" className="link">Link</a>
           <a href="/forever" className="link">Forever</a>
         </StyledGridItem>

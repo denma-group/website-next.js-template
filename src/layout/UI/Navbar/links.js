@@ -1,5 +1,5 @@
 // Libraries
-import React from 'react';
+import React, { useContext } from 'react';
 
 // Icons
 import InfoIcon from '@material-ui/icons/Info';
@@ -18,8 +18,11 @@ import TechConsultingIcon from '@material-ui/icons/PhoneIphone';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from 'src/layout/UI/Navbar/Drawer/ListItem';
-import { DropdownMenu } from 'src/components/UI'
+import { DropdownMenu } from 'src/components/UI';
 import { Header, Divider } from './components';
+
+// Dependencies
+import { NavbarContext } from './context';
 
 const links = [
   [
@@ -58,7 +61,6 @@ const links = [
       { icon: <WorkIcon />, title: 'About our work', caption: 'An overview of how we work alongside our clients' },
       { icon: <ContactIcon />, title: 'Contact', caption: 'How to get in touch' },
     ],
-    mobileOnly: true,
   },
   {
     key: 'how_we_work',
@@ -101,6 +103,10 @@ const getShouldRenderDrawerIcon = (navLinks = []) => navLinks.find(link => {
  * then render the respective component.
  */
 const renderNavLinks = (navLinks = []) => navLinks.map((link, index) => {
+  const navbarContext = useContext(NavbarContext);
+  const [navbarColor] = navbarContext.colorState;
+  const [navbarBackgroundColor] = navbarContext.backgroundColorState;
+
   if (Array.isArray(link)) {
     return (
       <React.Fragment key={index}>
@@ -112,13 +118,15 @@ const renderNavLinks = (navLinks = []) => navLinks.map((link, index) => {
   switch(type) {
     case 'list': {
       // Placeholder before implementing dropdown
-      const { key, color, header } = link;
+      const { key, color, header, items } = link;
       return header && (
         <DropdownMenu
           key={key}
           id={key}
-          color={color}
+          color={navbarColor || color}
+          backgroundColor={navbarBackgroundColor}
           header={header}
+          items={items}
         />
       );
     }
