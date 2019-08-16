@@ -136,7 +136,7 @@ export const useOnScrollBgColor = (
   const [setupOnMount, setSetupOnMount] = useState(setColorOnMount);
 
   useEffect(() => {
-    window.addEventListener('scroll', useHandleOnScroll, true);
+    window.addEventListener('scroll', useHandleOnScroll);
     if (setupOnMount) {
       onThrottledScrollHandler();
       setSetupOnMount(false);
