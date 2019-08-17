@@ -118,6 +118,7 @@ const Image = styled.div`
   img {
     width: 85%;
     margin: 0 auto;
+    max-height: 100%;
   }
 
   @media (max-width: ${({ theme }) => theme.screenMd}) {
@@ -179,7 +180,7 @@ const FabsWrapper = styled.div`
     }
 
     button {
-      display: inline;
+      display: inline-block;
       width: fit-content;
       border-top-left-radius: 28px;
       border-bottom-left-radius: 28px;

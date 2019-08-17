@@ -9,7 +9,8 @@ import LazyLoad from 'react-lazyload';
 const StyledImage = styled.img`
   width: ${props => props.width || '100%'};
   height: ${props => props.height || ''};
-  object-fit: ${props => props.objectFit || 'cover'};
+  object-fit: ${props => props.objectFit || 'contain'};
+  max-height: 100%;
   &.loading {
     opacity: 0;
     visibility: hidden;

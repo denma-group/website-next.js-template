@@ -24,6 +24,7 @@ import {
   BackgroundAttachedDiv,
   SubscribeForm,
   GetToKnowUs,
+  PromoVideo,
   StyledPageWrapper,
   HeroWrapper,
   LogoContainer,
@@ -159,13 +160,19 @@ const Homepage = props => {
         >
           <GetToKnowUs />
         </Row>
+        {/* PROMO VIDEO */}
+        <Row
+          height={totalScreenHeight}
+        >
+          <PromoVideo />
+        </Row>
         {/* LINKS */}
         <Row
           height={totalScreenHeight}
         >
           <HelpYourBusiness />
         </Row>
-        {/* DIVIDER */}
+        {/* BACKGROUND PARALLAX DIVIDER */}
         <Row
           height={totalScreenHeight * 0.5}
         >

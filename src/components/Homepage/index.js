@@ -4,6 +4,7 @@ import HelpYourBusiness from 'src/components/Homepage/HelpYourBusiness';
 import BackgroundAttachedDiv from 'src/components/Homepage/BackgroundAttachedDiv';
 import SubscribeForm from 'src/components/Homepage/SubscribeForm';
 import GetToKnowUs from 'src/components/Homepage/GetToKnowUs';
+import PromoVideo from 'src/components/Homepage/PromoVideo';
 import {
   StyledPageWrapper,
   HeroWrapper,
@@ -19,6 +20,7 @@ export {
   BackgroundAttachedDiv,
   SubscribeForm,
   GetToKnowUs,
+  PromoVideo,
   StyledPageWrapper,
   HeroWrapper,
   LogoContainer,
