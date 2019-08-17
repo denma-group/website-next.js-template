@@ -1,7 +1,7 @@
 // Libraries
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css as styledCss } from 'styled-components';
 
 // Components
 import Typography from '@material-ui/core/Typography';
@@ -65,6 +65,11 @@ const StyledH1 = styled(H1)`
       line-height: 36px;
     }
     ${({ css }) => css};
+    * {
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+    }
   }
 `;
 
@@ -86,6 +91,11 @@ const StyledH2 = styled(H2)`
       line-height: 30px;
     }
     ${({ css }) => css};
+    * {
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+    }
   }
 `;
 
@@ -93,8 +103,24 @@ const StyledH3 = styled(H3)`
   &&& {
     font-size: 24px;
     line-height: 36px;
+    @media (max-width: ${({ theme }) => theme.screenMd}) {
+      font-size: 22px;
+      line-height: 32px;
+    }
+    @media (max-width: ${({ theme }) => theme.screenSm}) {
+      font-size: 20px;
+      line-height: 26px;
+    }
+    @media (max-width: ${({ theme }) => theme.screenXs}) {
+      font-size: 18px;
+      line-height: 20px;
+    }
     ${({ css }) => css};
-    /* TODO: screen size changes */
+    * {
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+    }
   }
 `;
 
@@ -102,6 +128,11 @@ const StyledH6 = styled(H6)`
   &&& {
     ${({ css }) => css};
     color: ${({ theme, color }) => theme[color] || theme.secondary};
+    * {
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+    }
     /* TODO: screen size changes */
   }
 `;

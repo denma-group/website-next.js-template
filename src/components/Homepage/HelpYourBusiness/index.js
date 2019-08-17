@@ -6,10 +6,9 @@ import styled from 'styled-components';
 import image from 'static/images/homepage/help_your_business.png';
 
 // Components
-import Typography from '@material-ui/core/Typography';
-import Fab from '@material-ui/core/Fab';
 import { CSSTransition } from 'react-transition-group';
 import { LazyImage } from 'src/components/UI';
+import { H2, H3 } from 'src/components/UI/Text';
 
 const ANIMATION_TIMEOUT = 500;
 
@@ -26,26 +25,16 @@ const HelpYourBusiness = () => {
       >
         <Container>
           <Help>
-            <StyledHeader
-              variant="h2"
-              align="center"
-            >
+            <StyledH2>
               We’re committed to improve your ventures.
-            </StyledHeader>
-            <FabsWrapper>
-              <Fab>
-                New Enterprises
-              </Fab>
-              <Fab>
-                Existing Applications
-              </Fab>
-              <Fab>
-                Marketing Strategies and Analytics
-              </Fab>
-              <Fab>
-                Tech Consulting
-              </Fab>
-            </FabsWrapper>
+            </StyledH2>
+            <StyledH3>
+              We’ve experienced the cumbersome project management approach given by big firms. We <span>forgo</span> the <span>redundant</span> and <span>focus</span> on <span>generating value</span> for <span>your</span> company.
+            </StyledH3>
+            <br />
+            <StyledH3>
+              Our team knows that <span>responsiveness is key</span> for your project, and we’re here to tailor to your specific needs. And most <span>importantly</span>, you’re our team’s <span>priority</span>.
+            </StyledH3>
           </Help>
           <Image>
             <LazyImage
@@ -59,21 +48,11 @@ const HelpYourBusiness = () => {
   );
 };
 
+// Wrapper
 const Wrapper = styled.div`
   position: relative;
   min-width: 100%;
   min-height: 100%;
-  color: ${({ theme }) => theme.whiteColor};
-  :before {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: ${props => props.theme.primary};
-    opacity: 0.9;
-  }
 
   .content-enter {
     opacity: 0;
@@ -94,6 +73,7 @@ const Wrapper = styled.div`
   }
 `;
 
+// Left column
 const Container = styled.div`
   z-index: 1;
   position: absolute;
@@ -137,13 +117,14 @@ const Help = styled.div`
   padding: 0 5%;
 `;
 
-const StyledHeader = styled(Typography)`
+const StyledH2 = styled(H2)`
   &&& {
     font-size: 54px;
     line-height: 64px;
     margin-bottom: 1em;
     font-weight: 700;
-    color: ${props => props.theme.whiteColor};
+    color: ${props => props.theme.primary};
+    text-align: center;
 
     @media (max-width: ${({ theme }) => theme.screenMd}) {
       font-size: 48px;
@@ -163,52 +144,12 @@ const StyledHeader = styled(Typography)`
   }
 `;
 
-const FabsWrapper = styled.div`
+const StyledH3 = styled(H3)`
   &&& {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-
-    @media (max-height: ${({ theme }) => theme.screenSm}) {
-      flex-flow: row;
-      flex-wrap: wrap;
-      justify-content: space-evenly;
-      button {
-        margin-bottom: 16px !important;
-      }
-    }
-
-    button {
-      display: inline-block;
-      width: fit-content;
-      border-top-left-radius: 28px;
-      border-bottom-left-radius: 28px;
-      border-top-right-radius: 28px;
-      border-bottom-right-radius: 28px;
-      min-height: 56px;
-      height: auto;
-      padding: 8px 12px;
-      margin-bottom: 12px;
-      border: 2px solid ${props => props.theme.whiteColor};
-      background-color: transparent;
-
-      @media (max-width: ${({ theme }) => theme.screenMd}) {
-        padding: 4px 8px;
-        font-size: 14px;
-        margin-bottom: 8px;
-      }
-
-      span {
-        min-width: 70px;
-        color: ${props => props.theme.whiteColor};
-        font-size: 18px;
-        font-weight: 700;
-
-        @media (max-width: ${({ theme }) => theme.screenMd}) {
-          font-size: 15px;
-        }
-      }
+    text-align: justify;
+    span {
+      color: ${props => props.theme.primary};
+      font-weight: 400;
     }
   }
 `;
