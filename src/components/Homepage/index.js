@@ -3,12 +3,13 @@ import HeroSlider, { ActiveSlideThemeProvider } from 'src/components/Homepage/He
 import HelpYourBusiness from 'src/components/Homepage/HelpYourBusiness';
 import BackgroundAttachedDiv from 'src/components/Homepage/BackgroundAttachedDiv';
 import SubscribeForm from 'src/components/Homepage/SubscribeForm';
+import GetToKnowUs from 'src/components/Homepage/GetToKnowUs';
 import {
   StyledPageWrapper,
   HeroWrapper,
   LogoContainer,
   StyledLogo,
-  StyledHeroValueProposition
+  ValueProposition
 } from './styled-components';
 
 export {
@@ -17,9 +18,10 @@ export {
   HelpYourBusiness,
   BackgroundAttachedDiv,
   SubscribeForm,
+  GetToKnowUs,
   StyledPageWrapper,
   HeroWrapper,
   LogoContainer,
   StyledLogo,
-  StyledHeroValueProposition,
+  ValueProposition,
 };

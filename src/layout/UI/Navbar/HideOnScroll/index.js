@@ -20,7 +20,7 @@ const HideOnScroll = props => {
       {children}
     </Slide>
   );
-}
+};
 
 HideOnScroll.propTypes = {
   children: PropTypes.element.isRequired,

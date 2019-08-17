@@ -23,11 +23,12 @@ import {
   HelpYourBusiness,
   BackgroundAttachedDiv,
   SubscribeForm,
+  GetToKnowUs,
   StyledPageWrapper,
   HeroWrapper,
   LogoContainer,
   StyledLogo,
-  StyledHeroValueProposition,
+  ValueProposition,
 } from 'src/components/Homepage/';
 
 const Homepage = props => {
@@ -143,22 +144,20 @@ const Homepage = props => {
         </HeroWrapper>
         <Row
           height={totalScreenHeight}
-          styledCss={
-            css`
-              display: flex;
-              align-items: center;
-              justify-content: flex-start;
-              text-align: left;
-              max-width: 1200px;
-              margin: 100px auto 0;
-              padding: 0 40px;
-              background-color: transparent;
-            `}
+          styledCss={containerCss}
           innerRef={valuePropositionRef}
         >
-          <StyledHeroValueProposition variant="h1">
-            For companies who find themselves in need of <span>high-quality</span> software applications, <span>Denma</span> is a software development studio that provides personalized services with a solid methodology to <span>help</span> companies take their businesses to the <span>next level</span>.
-          </StyledHeroValueProposition>
+          <ValueProposition>
+            <span>Denma</span> develops <span>cutting-edge</span> technology for new and established companies.
+            {/* For companies who find themselves in need of <span>high-quality</span> software applications, <span>Denma</span> is a software development studio that provides personalized services with a solid methodology to <span>help</span> companies take their businesses to the <span>next level</span>. */}
+          </ValueProposition>
+        </Row>
+        {/* GET_TO_KNOW_US */}
+        <Row
+          height={totalScreenHeight}
+          styledCss={containerCss}
+        >
+          <GetToKnowUs />
         </Row>
         {/* LINKS */}
         <Row
@@ -172,10 +171,8 @@ const Homepage = props => {
         >
           <BackgroundAttachedDiv />
         </Row>
-        {/* HERO-SLIDER */}
-        <Row
-          height={0.9 * (totalScreenHeight - 64)}
-        >
+        {/* HERO_SLIDER */}
+        <Row>
           <HeroSlider
             isMobile={isMobile}
             settings={{
@@ -199,6 +196,17 @@ const Homepage = props => {
     </ActiveSlideThemeProvider>
   ), [totalScreenHeight, valuePropositionRef, isMobile]);
 };
+
+const containerCss = css`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 18px;
+  background-color: transparent;
+`;
 
 Homepage.propTypes = {
   isMobile: PropTypes.bool.isRequired,

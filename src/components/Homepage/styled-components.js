@@ -2,9 +2,10 @@
 import styled from 'styled-components';
 
 // Components
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 import PageWrapper from 'src/layout/UI/PageWrapper';
 import ResponsiveLogo from 'src/components/SVG/Logos/ResponsiveLogo';
+import { H1 } from 'src/components/UI/Text';
 
 export const StyledPageWrapper = styled(PageWrapper)`
   color: ${props => props.theme.lightDarkColor};
@@ -52,28 +53,15 @@ export const StyledLogo = styled(ResponsiveLogo)`
   }
 `;
 
-export const StyledHeroValueProposition = styled(Typography)`
+export const ValueProposition = styled(H1)`
   &&& {
-    font-size: 42px;
-    line-height: 64px;
     padding: 24px 0;
+    text-align: center;
     span {
       font-size: inherit;
       line-height: inherit;
       font-weight: 500;
       color: ${props => props.theme.primary}
-    }
-    @media (max-width: ${({ theme }) => theme.screenMd}) {
-      font-size: 36px;
-      line-height: 58px;
-    }
-    @media (max-width: ${({ theme }) => theme.screenSm}) {
-      font-size: 28px;
-      line-height: 52px;
-    }
-    @media (max-width: ${({ theme }) => theme.screenXs}) {
-      font-size: 24px;
-      line-height: 36px;
     }
   }
 `;

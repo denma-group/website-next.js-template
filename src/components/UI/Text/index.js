@@ -51,9 +51,20 @@ const Subtitle = ({ children, ...rest }) => (
 const StyledH1 = styled(H1)`
   &&& {
     font-size: 42px;
-    line-height: 54px;
+    line-height: 64px;
+    @media (max-width: ${({ theme }) => theme.screenMd}) {
+      font-size: 36px;
+      line-height: 58px;
+    }
+    @media (max-width: ${({ theme }) => theme.screenSm}) {
+      font-size: 28px;
+      line-height: 52px;
+    }
+    @media (max-width: ${({ theme }) => theme.screenXs}) {
+      font-size: 24px;
+      line-height: 36px;
+    }
     ${({ css }) => css};
-    /* TODO: screen size changes */
   }
 `;
 
@@ -62,7 +73,19 @@ const StyledH2 = styled(H2)`
     font-size: 34px;
     line-height: 46px;
     ${({ css }) => css};
-    /* TODO: screen size changes */
+    @media (max-width: ${({ theme }) => theme.screenMd}) {
+      font-size: 28px;
+      line-height: 40px;
+    }
+    @media (max-width: ${({ theme }) => theme.screenSm}) {
+      font-size: 22px;
+      line-height: 36px;
+    }
+    @media (max-width: ${({ theme }) => theme.screenXs}) {
+      font-size: 18px;
+      line-height: 30px;
+    }
+    ${({ css }) => css};
   }
 `;
 

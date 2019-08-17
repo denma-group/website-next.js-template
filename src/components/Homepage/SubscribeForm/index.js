@@ -7,17 +7,17 @@ import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import SubmitIcon from '@material-ui/icons/Send';
 import {
-  StyledHeroValueProposition
+  ValueProposition
 } from 'src/components/Homepage';
 
 const SubscribeForm = () => {
   return (
     <Container>
-      <StyledHeroValueProposition
+      <ValueProposition
         align="center"
       >
         <span>Subscribe to us to hear lorem ipsum all the time!</span>
-      </StyledHeroValueProposition>
+      </ValueProposition>
       <Form noValidate autoComplete="off">
         <StyledTextField
           id="subscribe-name-input"

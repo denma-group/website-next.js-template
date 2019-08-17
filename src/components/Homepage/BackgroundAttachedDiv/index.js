@@ -28,7 +28,7 @@ const BackgroundAttachedDiv = () => {
 };
 
 const Wrapper = styled.div`
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 100%;
   background-image: url(${image});

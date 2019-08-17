@@ -49,7 +49,6 @@ const Navbar = () => {
   const [styledCss] = navbarContext.cssState;
 
   const shouldRenderDrawerIcon = getShouldRenderDrawerIcon(links);
-  console.log('shouldRenderDrawerIcon', shouldRenderDrawerIcon);
 
   return (
     <React.Fragment>

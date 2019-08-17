@@ -3,16 +3,16 @@ import React, { useContext } from 'react';
 
 // Icons
 import InfoIcon from '@material-ui/icons/Info';
-import WorkIcon from '@material-ui/icons/GroupWork';
+// import WorkIcon from '@material-ui/icons/GroupWork';
 import ContactIcon from '@material-ui/icons/Mail';
-import DesignIcon from '@material-ui/icons/DeveloperBoard';
-import DevelopIcon from '@material-ui/icons/DeveloperMode';
-import DeliverIcon from '@material-ui/icons/HowToReg';
-import MaintainIcon from '@material-ui/icons/Sync';
+// import DesignIcon from '@material-ui/icons/DeveloperBoard';
+// import DevelopIcon from '@material-ui/icons/DeveloperMode';
+// import DeliverIcon from '@material-ui/icons/HowToReg';
+// import MaintainIcon from '@material-ui/icons/Sync';
 import NewEnterprisesIcon from '@material-ui/icons/Business';
 import ExistingAppsIcons from '@material-ui/icons/Apps';
-import MarketingIcon from '@material-ui/icons/DataUsage';
-import TechConsultingIcon from '@material-ui/icons/PhoneIphone';
+// import MarketingIcon from '@material-ui/icons/DataUsage';
+// import TechConsultingIcon from '@material-ui/icons/PhoneIphone';
 
 // Components
 import Button from '@material-ui/core/Button';
@@ -25,67 +25,38 @@ import { Header, Divider } from './components';
 import { NavbarContext } from './context';
 
 const links = [
-  [
-    {
-      key: 'about_us',
-      type: 'button',
-      color: 'inherit',
-      title: 'About us',
-      caption: 'Meaning of DENMA, and our values',
-      icon: <InfoIcon />,
-    },
-    {
-      key: 'about_our_work',
-      type: 'button',
-      color: 'inherit',
-      title: 'About our work',
-      caption: 'An overview of how we work alongside our clients',
-      icon: <WorkIcon />,
-    },
-    {
-      key: 'contact_us',
-      type: 'button',
-      color: 'inherit',
-      title: 'Contact us',
-      caption: 'How to get in touch',
-      icon: <ContactIcon />,
-    }
-  ],
   {
-    key: 'drawer_headers',
-    type: 'list',
-    header: null,
+    key: 'what_we_do',
+    type: 'button',
     color: 'inherit',
-    items: [
-      { icon: <InfoIcon />, title: 'About us', caption: 'Meaning of DENMA, and our values' },
-      { icon: <WorkIcon />, title: 'About our work', caption: 'An overview of how we work alongside our clients' },
-      { icon: <ContactIcon />, title: 'Contact', caption: 'How to get in touch' },
-    ],
+    title: 'What we do',
+    caption: 'An overview of how we work alongside our clients.',
+    icon: <InfoIcon />,
   },
   {
-    key: 'how_we_work',
-    type: 'list',
-    header: 'How we work',
+    key: 'who_we_are',
+    type: 'button',
     color: 'inherit',
-    items: [
-      { icon: <DesignIcon />, title: 'Design', caption: 'Design caption' },
-      { icon: <DevelopIcon />, title: 'Develop', caption: 'Develop caption' },
-      { icon: <DeliverIcon />, title: 'Deliver', caption: 'Deliver caption' },
-      { icon: <MaintainIcon />, title: 'Maintain', caption: 'Maintain caption' },
-    ],
+    title: 'Who we are',
+    caption: 'Who we are caption',
+    icon: <ExistingAppsIcons />,
   },
   {
-    key: 'how_we_help',
-    type: 'list',
-    header: 'How we help',
+    key: 'why_us',
+    type: 'button',
     color: 'inherit',
-    items: [
-      { icon: <NewEnterprisesIcon />, title: 'New Enterprises', caption: 'New Enterprises caption' },
-      { icon: <ExistingAppsIcons />, title: 'Existing Applications', caption: 'Existing Applications caption' },
-      { icon: <MarketingIcon />, title: 'Marketing Strategies and Analytics', caption: 'Marketing Strategies and Analytics caption' },
-      { icon: <TechConsultingIcon />, title: 'Tech Consulting', caption: 'Tech Consulting caption' },
-    ],
+    title: 'Why us?',
+    caption: 'Why us? caption',
+    icon: <NewEnterprisesIcon />,
   },
+  {
+    key: 'say_hello',
+    type: 'button',
+    color: 'inherit',
+    title: 'Say hello',
+    caption: 'How to get in touch',
+    icon: <ContactIcon />,
+  }
 ];
 
 const getShouldRenderDrawerIcon = (navLinks = []) => navLinks.find(link => {
@@ -189,12 +160,19 @@ const renderDrawerLinks = (navLinks = [], listItemProps) => navLinks.map((link, 
       );
     }
     case 'button': {
-      const { key, color, title } = link;
+      const { key, icon, title, caption } = link;
       return (
-        <ListItem
+        <React.Fragment
           key={key}
-          title={title}
-        />
+        >
+          <ListItem
+            key={key}
+            title={title}
+            icon={icon}
+            caption={caption}
+          />
+          <Divider />
+        </React.Fragment>
       );
     }
     default:

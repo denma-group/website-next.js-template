@@ -29,10 +29,13 @@ body,
 }
 
 body *:not(svg) {
-  font: 100% $base-font-family;
+  font-family: $base-font-family;
   font-size: $base-font-size;
-  font-weight: $font-normal;
   line-height: $base-line-height;
+}
+
+b {
+  font-weight: $font-bold;
 }
 
 
