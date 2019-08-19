@@ -1,6 +1,6 @@
 import React, { useContext, useState, useMemo, useRef, useEffect } from 'react';
 import styled, { withTheme } from 'styled-components';
-import { Header, Founder } from 'src/components/AboutUs';
+import { Header, Founder, Mission } from 'src/components/AboutUs';
 
 const AboutUs = () => {
   const founderRef = useRef(null);
@@ -14,6 +14,7 @@ const AboutUs = () => {
     <Container>
       <Header scrollRef={founderRef} />
       <Founder innerRef={founderRef} />
+      <Mission />
     </Container>
   );
 };

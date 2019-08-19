@@ -70,7 +70,7 @@ export const Founders = props => {
       <FoundersBioContainer>
         {foundersData.map((founder, i) => (
           <CardContainer key={i.toString()}>
-            <FadeScaleIn delay={founder.delay}>
+            <FadeScaleIn delay={founder.delay} time={0.5}>
               <FounderCard founder={founder} />
             </FadeScaleIn>
           </CardContainer>
