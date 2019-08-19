@@ -8,18 +8,20 @@ import Text from 'src/components/UI/Text';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 
 const Header = props => {
-  const founderContainerRef = useRef(null);
+  // States
   const [screenHeight, setScreenHeight] = useState(0);
+
   // Functions
   const ArrowDownClickHandler = useCallback(() => {
-    if (founderContainerRef && founderContainerRef.current) {
-      founderContainerRef.current.scrollIntoView({
+    if (props.scrollRef && props.scrollRef.current) {
+      props.scrollRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'end',
-        inline: 'nearest'
+        inline: 'nearest',
       });
     }
-  }, []);
+  }, [props.scrollRef]);
+
   return (
     <HeaderStyle>
       <ReactResizeDetector
@@ -64,7 +66,8 @@ const Header = props => {
             position: 'absolute',
             bottom: -250,
             right: -250,
-            zIndex: 10
+            zIndex: 10,
+            overflow: 'hidden',
           }}
         >
           <Circle size={500} color={props.theme.brandDarkRed}>
@@ -79,7 +82,7 @@ const Header = props => {
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 80vh;
   height: ${props => `${props.height - 200}px`};
   width: 800px;
   margin-left: 120px;
@@ -136,7 +139,8 @@ const Circle = styled.div`
 `;
 
 Header.propTypes = {
-  theme: PropTypes.instanceOf(Object).isRequired
+  theme: PropTypes.instanceOf(Object).isRequired,
+  scrollRef: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default withTheme(Header);

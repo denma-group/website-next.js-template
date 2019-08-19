@@ -1,4 +1,4 @@
-import React, { useRef, useState, useLayoutEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslateContent } from 'src/utils/hooks/useTranslateContext';
 
@@ -15,7 +15,7 @@ const HookedParallax = props => {
 
   const { translateYVal } = useTranslateContent(multiplierY, rect);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (divRef) {
       const { y, height } = divRef.current.getBoundingClientRect();
       // rect has the Y position and height of the component
@@ -33,11 +33,11 @@ const HookedParallax = props => {
 HookedParallax.propTypes = {
   multiplierY: PropTypes.number.isRequired,
   children: PropTypes.node.isRequired,
-  style: PropTypes.instanceOf(Object)
+  style: PropTypes.instanceOf(Object),
 };
 
 HookedParallax.defaultProps = {
-  style: {}
+  style: {},
 };
 
 export default HookedParallax;

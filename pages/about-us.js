@@ -1,14 +1,19 @@
 import React, { useContext, useState, useMemo, useRef, useEffect } from 'react';
-import styled, { css, withTheme } from 'styled-components';
+import styled, { withTheme } from 'styled-components';
+import { Header, Founder } from 'src/components/AboutUs';
 
-import Text from 'src/components/UI/Text';
-import { Header } from 'src/components/AboutUs';
-
-const AboutUs = props => {
-  useEffect(() => {});
+const AboutUs = () => {
+  const founderRef = useRef(null);
+  useEffect(() => {
+    document.body.style.overflowX = 'hidden';
+    return () => {
+      document.body.style.overflowX = 'visible';
+    };
+  });
   return (
     <Container>
-      <Header />
+      <Header scrollRef={founderRef} />
+      <Founder innerRef={founderRef} />
     </Container>
   );
 };
