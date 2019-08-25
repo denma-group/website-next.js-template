@@ -30,7 +30,7 @@ const FounderCard = props => {
 const CardOutside = styled.div`
   display: flex;
   position: relative;
-  width: 60%;
+  width: 80%;
   padding-top: 100px;
   justify-content: center;
   align-items: center;

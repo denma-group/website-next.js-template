@@ -12,24 +12,25 @@ const Mission = props => {
       >
         Mission
       </Text.H1>
-      <Text.P
+      <Text.H3
         css={css`
           &&& {
             color: ${({ theme }) => theme.brandWhite};
             margin: 50px;
-						font-size: 20px;
-						width: 80%;
-						line-height: 30px;
+            padding: 0 200px;
           }
         `}
       >
         survived not only five centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-        containing Lorem
-        survived not only five centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-        containing Lorem
-      </Text.P>
+        essentially unchanged.
+      </Text.H3>
+      <Text.H1
+        css={css`
+          color: ${({ theme }) => theme.brandOrange};
+        `}
+      >
+        Values
+      </Text.H1>
     </Container>
   );
 };
