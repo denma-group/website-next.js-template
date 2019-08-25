@@ -2,10 +2,14 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+
+// Dependencies
 import { useTranslateContent } from 'src/utils/hooks/useTranslateContext';
+import elementPageOffset from 'src/utils/elementPageOffset';
+
+const BODY_HEIGHT_SETUP_DELAY = 100;
 
 // TODO: check mobile
-
 const HookedParallax = props => {
   const [innerHeightWatcher, setInnerHeightWatcher] = useState({
     watcher: 0,
@@ -21,7 +25,7 @@ const HookedParallax = props => {
       ...oldState,
       isReady: true,
       }));
-    }, 500);
+    }, BODY_HEIGHT_SETUP_DELAY);
     setInnerHeightWatcher(oldState => ({
       ...oldState,
       timeoutId: newTimeoutId,
@@ -32,24 +36,20 @@ const HookedParallax = props => {
   // multiplierY defines how fast or slow we translate our elements
   const { multiplierY, style, children } = props;
   const [rect, setRect] = useState({});
-  // const [screenHeight, setScreenHeight] = useState(0);
-  // const [scrollY, setScrollY] = useState(0);
 
   const divRef = useRef(null);
 
-  console.log('divRef', divRef);
-  console.log('rect', rect);
   const { translateYVal } = useTranslateContent(multiplierY, rect, isReady);
-  console.log('translateYVal', translateYVal);
 
   useEffect(() => {
-    if (divRef && divRef.current) {
-      const { y, height } = divRef.current.getBoundingClientRect();
-      // rect has the Y position and height of the component
-      setRect({ startingY: y, componentHeight: height });
+    if (divRef && divRef.current && isReady) {
+      const { pageTop, height } = elementPageOffset(divRef.current);
+      // rect object has the Y position and height of the component.
+      setRect({ startingY: pageTop, componentHeight: height });
     }
-  }, [divRef]);
+  }, [divRef, isReady]);
 
+  // Do not render component until the body's height has been set
   if (!isReady) return null;
 
   return (
@@ -64,10 +64,6 @@ const HookedParallax = props => {
     </div>
   );
 };
-
-const Container = styled.div`
-  transform: translateY(${({ translateYVal }) => `${translateYVal}px`});
-`;
 
 HookedParallax.propTypes = {
   multiplierY: PropTypes.number.isRequired,
