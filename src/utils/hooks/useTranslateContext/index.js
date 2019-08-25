@@ -1,6 +1,7 @@
 // Libraries
-import { useState, useEffect, useCallback } from 'react';
-import _ from 'lodash';
+import { useState, useEffect } from 'react';
+import throttle from 'lodash/throttle';
+import clamp from 'lodash/clamp';
 
 /*
 	`useTranslateContent` takes a multiplier and returns the translateY value
@@ -11,7 +12,7 @@ const getTranslateYValue = (startingY, componentHeight, multipliersY, setTransla
   // Checks if component is in view before doing calculations for performance
   if (scrollY + innerHeight >= startingY * 0.8 && scrollY < startingY * 1.2) {
     // 'componentOffsetMultiplier' handles some weird cases when scrollY is less than the innerHeight
-    const componentOffsetMultiplier = _.clamp(1 - scrollY / innerHeight, 0, 1);
+    const componentOffsetMultiplier = clamp(1 - scrollY / innerHeight, 0, 1);
     console.log('startingY', startingY);
     const relativeY =
       scrollY + innerHeight - startingY - componentOffsetMultiplier * (componentHeight / 2);
@@ -41,7 +42,7 @@ export const useTranslateContent = (multipliersY, { startingY, componentHeight }
   // };
 
   // throttled for performance
-  const throttled = _.throttle(() => getTranslateYValue(startingY, componentHeight, multipliersY, setTranslateYVal), 100);
+  const throttled = throttle(() => getTranslateYValue(startingY, componentHeight, multipliersY, setTranslateYVal), 100);
   useEffect(() => {
     if (isReady) {
       window.addEventListener('scroll', throttled);
