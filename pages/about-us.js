@@ -5,14 +5,15 @@ import { useIsReady } from 'src/utils/hooks/useIsReady';
 
 const AboutUs = () => {
   const founderRef = useRef(null);
-  const { isReady } = useIsReady();
+  // const { isReady } = useIsReady();
+  useIsReady();
+  // useEffect(() => {
+  //   document.body.style.overflowX = 'hidden';
+  //   return () => {
+  //     document.body.style.overflowX = 'visible';
+  //   };
+  // });
 
-  useEffect(() => {
-    document.body.style.overflowX = 'hidden';
-    return () => {
-      document.body.style.overflowX = 'visible';
-    };
-  });
   return (
     <Container>
       <>

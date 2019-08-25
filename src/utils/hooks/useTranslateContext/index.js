@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import _ from 'lodash';
 
-/* 
+/*
 	`useTranslateContent` takes a multiplier and returns the translateY value
 */
 

@@ -10,17 +10,10 @@ export const useIsReady = () => {
   }, [isReady]);
 
   useEffect(() => {
-    if (window.scrollY === 0) {
-      setIsReady(true);
-    } else {
-      window.scroll({
-        top: 0,
-        left: 0,
-      });
-      window.addEventListener('scroll', initialScroll);
-    }
-
-    return () => window.removeEventListener('scroll', initialScroll);
+    window.scroll({
+      top: 0,
+      left: 0,
+    });
   }, []);
 
   return { isReady, setIsReady };
