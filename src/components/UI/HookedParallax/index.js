@@ -1,6 +1,5 @@
 // Libraries
 import React, { useRef, useState, useEffect } from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 // Dependencies
