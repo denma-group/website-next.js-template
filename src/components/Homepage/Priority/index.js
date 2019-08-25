@@ -6,11 +6,10 @@ import styled from 'styled-components';
 import image from 'static/images/homepage/background-attachment-divider.jpg';
 
 // Components
-import Typography from '@material-ui/core/Typography';
-
+import { H1 } from 'src/components/UI/Text';
 import { ActiveSlideThemeContext } from '../HeroSlider';
 
-const BackgroundAttachedDiv = () => {
+const Priority = () => {
   const { activeSlideTheme } = useContext(ActiveSlideThemeContext);
 
   return (
@@ -18,11 +17,15 @@ const BackgroundAttachedDiv = () => {
       <Overlay
         activeSlideTheme={activeSlideTheme}
       />
-      <Text>
-        <StyledHeader align="center">
-          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+      <Container>
+        <StyledHeader
+          align="center"
+        >
+          We forgo the redundant and focus on <span>generating value for your company</span>.
+          Our team knows that responsiveness is key for your project, and we’re here to
+          tailor to your specific needs.
         </StyledHeader>
-      </Text>
+      </Container>
     </Wrapper>
   );
 };
@@ -40,10 +43,10 @@ const Overlay = styled.div`
   width: 100%;
   height: 100%;
   background-image: linear-gradient(0deg, ${({ theme, activeSlideTheme }) => activeSlideTheme || theme.servify} 0%, ${({ theme }) => theme.primary} 100%);
-  opacity: 0.65;
+  opacity: 0.5;
 `;
 
-const Text = styled.div`
+const Container = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -54,30 +57,19 @@ const Text = styled.div`
   align-items: center;
 `;
 
-const StyledHeader = styled(Typography)`
+const StyledHeader = styled(H1)`
   &&& {
-    font-size: 54px;
-    line-height: 64px;
-    margin-bottom: 1em;
-    font-weight: 700;
+    margin: 0 1rem;
     color: ${props => props.theme.whiteColor};
-
-    @media (max-width: ${({ theme }) => theme.screenMd}) {
-      font-size: 48px;
-      line-height: 58px;
-      margin-bottom: 1.25em;
-    }
-
-    @media (max-width: ${({ theme }) => theme.screenSm}) {
-      font-size: 36px;
-      line-height: 52px;
-    }
-
-    @media (max-width: ${({ theme }) => theme.screenXs}) {
-      font-size: 28px;
-      line-height: 36px;
-    }
+    text-shadow: 1px 1px 5px ${props => props.theme.darkColor};
+  }
+  &&& span {
+    color: ${props => props.theme.primary};
+    text-shadow: 1px 1px 2.5px ${props => props.theme.darkColor};
+  }
+  &&&, span {
+    font-weight: 700;
   }
 `;
 
-export default BackgroundAttachedDiv;
+export default Priority;

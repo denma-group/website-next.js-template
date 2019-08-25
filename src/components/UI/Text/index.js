@@ -158,8 +158,8 @@ const StyledCaption = styled(Caption)`
 
 const StyledSubtitle = styled(Subtitle)`
   &&& {
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 18px;
+    line-height: 32px;
     ${({ css }) => css};
     color: ${({ theme, color }) => theme[color] || theme.secondary};
     /* TODO: screen size changes */

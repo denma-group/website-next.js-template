@@ -13,7 +13,6 @@ import { useOnScrollBgColor } from 'src/utils/hooks/useOnScrollBgColor';
 import ReactResizeDetector from 'react-resize-detector';
 import {
   Row,
-  Col,
 } from 'src/components/Layout';
 import { NavbarContext } from 'src/layout/UI/Navbar';
 import { Parallax } from 'src/components/UI';
@@ -21,7 +20,7 @@ import {
   HeroSlider,
   ActiveSlideThemeProvider,
   HelpYourBusiness,
-  BackgroundAttachedDiv,
+  Priority,
   SubscribeForm,
   GetToKnowUs,
   PromoVideo,
@@ -30,6 +29,7 @@ import {
   LogoContainer,
   StyledLogo,
   ValueProposition,
+  WhyUsStoryLinks,
 } from 'src/components/Homepage/';
 
 const Homepage = props => {
@@ -147,6 +147,8 @@ const Homepage = props => {
           height={totalScreenHeight}
           styledCss={containerCss}
           innerRef={valuePropositionRef}
+          alignItems="center"
+          justify="center"
         >
           <ValueProposition>
             <span>Denma</span> develops <span>cutting-edge</span> technology for new and established companies.
@@ -157,12 +159,16 @@ const Homepage = props => {
         <Row
           height={totalScreenHeight}
           styledCss={containerCss}
+          alignItems="center"
+          justify="center"
         >
           <GetToKnowUs />
         </Row>
         {/* PROMO VIDEO */}
         <Row
           height={totalScreenHeight}
+          alignItems="center"
+          justify="center"
         >
           <PromoVideo />
         </Row>
@@ -172,11 +178,11 @@ const Homepage = props => {
         >
           <HelpYourBusiness />
         </Row>
-        {/* BACKGROUND PARALLAX DIVIDER */}
+        {/* PRIORITY/BACKGROUND PARALLAX DIVIDER */}
         <Row
           height={totalScreenHeight * 0.5}
         >
-          <BackgroundAttachedDiv />
+          <Priority />
         </Row>
         {/* HERO_SLIDER */}
         <Row>
@@ -192,6 +198,12 @@ const Homepage = props => {
               color: '#FFF'
             }}
           />
+        </Row>
+        {/* WHY US/OUR STORY LINKS */}
+        <Row
+          height="auto"
+        >
+          <WhyUsStoryLinks />
         </Row>
         {/* SUBSCRIBE TO US FORM */}
         <Row

@@ -86,8 +86,18 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const Image = styled.div`
+const Help = styled.div`
   min-width: 55%;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  padding: 0 5%;
+`;
+
+const Image = styled.div`
   flex: 1;
   width: 100%;
   height: 100%;
@@ -105,16 +115,6 @@ const Image = styled.div`
     display: none;
     min-width: 0%;
   }
-`;
-
-const Help = styled.div`
-  flex: 1;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  padding: 0 5%;
 `;
 
 const StyledH2 = styled(H2)`

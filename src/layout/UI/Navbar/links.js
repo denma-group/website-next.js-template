@@ -34,11 +34,11 @@ const links = [
     icon: <InfoIcon />,
   },
   {
-    key: 'who_we_are',
+    key: 'about us',
     type: 'button',
     color: 'inherit',
-    title: 'Who we are',
-    caption: 'Who we are caption',
+    title: 'About us',
+    caption: 'Who we are',
     icon: <ExistingAppsIcons />,
   },
   {
@@ -50,11 +50,11 @@ const links = [
     icon: <NewEnterprisesIcon />,
   },
   {
-    key: 'say_hello',
+    key: 'contact_us',
     type: 'button',
     color: 'inherit',
-    title: 'Say hello',
-    caption: 'How to get in touch',
+    title: 'Contact us',
+    caption: 'Say hello, get in touch with us!',
     icon: <ContactIcon />,
   }
 ];
