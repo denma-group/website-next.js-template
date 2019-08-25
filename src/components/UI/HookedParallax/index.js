@@ -1,5 +1,6 @@
 // Libraries
 import React, { useRef, useState, useEffect } from 'react';
+import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 
 // Dependencies
@@ -28,9 +29,18 @@ const HookedParallax = props => {
     setInnerHeightWatcher(oldState => ({
       ...oldState,
       timeoutId: newTimeoutId,
+      isReady: false,
     }));
     // We don't want to re-run this useEffect by subscribing timeoutId to avoid an infinite loop
   }, [watcher]); // eslint-disable-line
+
+  useEffect(() => {
+    setInnerHeightWatcher(oldState => ({
+      ...oldState,
+      isReady: false,
+      watcher: scrollHeight,
+    }));
+  }, [scrollHeight]);
 
   // multiplierY defines how fast or slow we translate our elements
   const { multiplierY, style, children } = props;
@@ -51,8 +61,10 @@ const HookedParallax = props => {
   // Do not render component until the body's height has been set
   if (!isReady) return null;
 
+  const { scrollHeight } = document.body;
+
   return (
-    <div
+    <Container
       ref={divRef}
       style={{
         ...style,
@@ -60,7 +72,7 @@ const HookedParallax = props => {
       }}
     >
       {children}
-    </div>
+    </Container>
   );
 };
 
@@ -73,5 +85,18 @@ HookedParallax.propTypes = {
 HookedParallax.defaultProps = {
   style: {},
 };
+
+const popFadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+const Container = styled.div`
+  animation: ${popFadeIn} ease 250ms;
+`;
 
 export default HookedParallax;
