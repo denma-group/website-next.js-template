@@ -48,7 +48,7 @@ export const StyledLogo = styled(ResponsiveLogo)`
   margin: 0 auto 72px;
   width: 75%;
 
-  @media (max-width: ${({ theme }) => theme.screenXl}) {
+  @media (max-width: ${({ theme }) => theme.screenXl}) and (orientation: portrait) {
     margin: -120px auto 24px;
   }
 `;
