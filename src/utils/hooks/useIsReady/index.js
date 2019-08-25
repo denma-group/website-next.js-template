@@ -10,6 +10,7 @@ export const useIsReady = () => {
   }, [isReady]);
 
   useEffect(() => {
+    console.log('zzz windowY:', window.scrollY);
     if (window.scrollY === 0) {
       setIsReady(true);
     } else {

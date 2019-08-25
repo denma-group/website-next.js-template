@@ -15,11 +15,13 @@ const AboutUs = () => {
   });
   return (
     <Container>
-      <>
-        <Header scrollRef={founderRef} />
-        <Founder innerRef={founderRef} />
-        <Mission />
-      </>
+      {isReady && (
+        <>
+          <Header scrollRef={founderRef} />
+          <Founder innerRef={founderRef} />
+          <Mission />
+        </>
+      )}
     </Container>
   );
 };
