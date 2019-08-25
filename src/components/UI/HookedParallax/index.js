@@ -39,7 +39,7 @@ const HookedParallax = props => {
 
   console.log('divRef', divRef);
   console.log('rect', rect);
-  const { translateYVal } = useTranslateContent(multiplierY, rect);
+  const { translateYVal } = useTranslateContent(multiplierY, rect, isReady);
   console.log('translateYVal', translateYVal);
 
   useEffect(() => {

@@ -5,7 +5,7 @@ import _ from 'lodash';
 	`useTranslateContent` takes a multiplier and returns the translateY value
 */
 
-export const useTranslateContent = (multipliersY, { startingY, componentHeight }) => {
+export const useTranslateContent = (multipliersY, { startingY, componentHeight }, isReady = true) => {
   const [translateYVal, setTranslateYVal] = useState(0);
 
   // throtheled function that gets the Y translate value
@@ -27,9 +27,11 @@ export const useTranslateContent = (multipliersY, { startingY, componentHeight }
   // throttled for performance
   const throttled = _.throttle(getTranslateYValue, 100);
   useEffect(() => {
-    window.addEventListener('scroll', throttled);
-    return () => window.removeEventListener('scroll', throttled);
-  }, [getTranslateYValue, throttled]);
+    if (isReady) {
+      window.addEventListener('scroll', throttled);
+      return () => window.removeEventListener('scroll', throttled);
+    }
+  }, [getTranslateYValue, throttled, isReady]);
 
   return { translateYVal };
 };
