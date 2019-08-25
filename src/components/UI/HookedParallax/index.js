@@ -16,7 +16,7 @@ const HookedParallax = props => {
   const { translateYVal } = useTranslateContent(multiplierY, rect);
 
   useEffect(() => {
-    if (divRef) {
+    if (divRef && window) {
       const { y, height } = divRef.current.getBoundingClientRect();
       // rect has the Y position and height of the component
       setRect({ startingY: y, componentHeight: height });

@@ -10,6 +10,7 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 const Header = props => {
   // States
   const [screenHeight, setScreenHeight] = useState(0);
+  const [screenWidth, setScreenWidth] = useState(0);
 
   // Functions
   const ArrowDownClickHandler = useCallback(() => {
@@ -29,6 +30,7 @@ const Header = props => {
         handleHeight
         onResize={() => {
           setScreenHeight(window.innerHeight);
+          setScreenWidth(window.innerWidth);
         }}
       />
       <HeaderContainer height={screenHeight}>
@@ -59,21 +61,23 @@ const Header = props => {
         <GradientButton color1={props.theme.brandDarkRed} color2={props.theme.brandOrange}>
           Contact Us
         </GradientButton>
-        <HookedParallax
-          multiplierY={2}
-          style={{
-            marginTop: 20,
-            position: 'absolute',
-            bottom: -250,
-            right: -250,
-            zIndex: 10,
-            overflow: 'hidden',
-          }}
-        >
-          <Circle size={500} color={props.theme.brandDarkRed}>
-            <ArrowDownwardIcon onClick={ArrowDownClickHandler} className="scroll-down" />
-          </Circle>
-        </HookedParallax>
+        {!!screenWidth && (
+          <HookedParallax
+            multiplierY={2}
+            style={{
+              marginTop: 20,
+              position: 'absolute',
+              bottom: screenWidth > 900 ? -250 : -150,
+              right: screenWidth > 900 ? -250 : -150,
+              zIndex: 10,
+              overflow: 'hidden',
+            }}
+          >
+            <Circle size={screenWidth > 900 ? 500 : 300} color={props.theme.brandDarkRed}>
+              <ArrowDownwardIcon onClick={ArrowDownClickHandler} className="scroll-down" />
+            </Circle>
+          </HookedParallax>
+        )}
       </HeaderContainer>
     </HeaderStyle>
   );
@@ -82,12 +86,20 @@ const Header = props => {
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 80vh;
+  min-height: 100vh;
   height: ${props => `${props.height - 200}px`};
   width: 800px;
   margin-left: 120px;
   margin-top: 200px;
   overflow: hidden;
+  @media (max-width: ${({ theme }) => theme.screenMd}) {
+    margin-top: 100px;
+    margin-left: 60px;
+  }
+  @media (max-width: ${({ theme }) => theme.screenSm}) {
+    margin-top: 50px;
+    margin-left: 30px;
+  }
 `;
 
 const SpanText = styled.span`
@@ -114,6 +126,11 @@ const GradientButton = styled(Button)`
     width: 400px;
     margin-top: 20px;
     font-size: 42px;
+
+    @media (max-width: ${({ theme }) => theme.screenMd}) {
+      margin-top: 40px;
+      width: 200px;
+    }
   }
 `;
 

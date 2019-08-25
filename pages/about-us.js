@@ -5,7 +5,7 @@ import { useIsReady } from 'src/utils/hooks/useIsReady';
 
 const AboutUs = () => {
   const founderRef = useRef(null);
-  const { isReady } = useIsReady();
+  // const { isReady } = useIsReady();
 
   useEffect(() => {
     document.body.style.overflowX = 'hidden';
@@ -15,13 +15,11 @@ const AboutUs = () => {
   });
   return (
     <Container>
-      {isReady && (
-        <>
-          <Header scrollRef={founderRef} />
-          <Founder innerRef={founderRef} />
-          <Mission />
-        </>
-      )}
+      <>
+        <Header scrollRef={founderRef} />
+        <Founder innerRef={founderRef} />
+        <Mission />
+      </>
     </Container>
   );
 };

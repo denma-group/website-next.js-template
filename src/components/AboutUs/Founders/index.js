@@ -50,13 +50,16 @@ export const Founders = props => {
   );
   return (
     <FounderContainer ref={props.innerRef} style={{ position: 'relative', zIndex: 0 }}>
-      <Text.H1
-        css={css`
-          color: ${props.theme.brandOrange};
-        `}
-      >
-        Founder`s Story
-      </Text.H1>
+      <div ref={props.innerRef}>
+        <Text.H1
+          css={css`
+            color: ${props.theme.brandOrange};
+          `}
+        >
+          Founder`s Story
+        </Text.H1>
+      </div>
+
       <Text.H3
         css={css`
           color: ${props.theme.whiteColor};
@@ -111,6 +114,7 @@ const Square = styled.div`
 `;
 
 const FounderContainer = styled.div`
+  position: relative;
   min-height: 100vh;
   background-color: ${props => props.theme.lightDarkColor};
   display: flex;

@@ -6,6 +6,7 @@ import _ from 'lodash';
 */
 
 export const useTranslateContent = (multipliersY, { startingY, componentHeight }) => {
+  console.log('zzz startingY:', startingY);
   const [translateYVal, setTranslateYVal] = useState(0);
 
   // throtheled function that gets the Y translate value
