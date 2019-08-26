@@ -4,6 +4,9 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet as StyledComponentsServerStyleSheet } from 'styled-components';
 import { ServerStyleSheets as MuiServerStyleSheets } from '@material-ui/styles';
 
+// Polyfills
+import 'intersection-observer';
+
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     // Resolution order

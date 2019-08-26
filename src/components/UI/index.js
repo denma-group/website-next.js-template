@@ -1,6 +1,7 @@
 // Libraries
 import DropdownMenu from './DropdownMenu';
 import Fab from './Fab';
+import Image from './Image';
 import LazyImage from './LazyImage';
 import Loader from './Loader';
 import LogoLoader from './LogoLoader';
@@ -10,6 +11,7 @@ import * as Text from './Text';
 export {
   DropdownMenu,
   Fab,
+  Image,
   LazyImage,
   Loader,
   LogoLoader,

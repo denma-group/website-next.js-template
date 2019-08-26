@@ -56,6 +56,8 @@ export const StyledLogo = styled(ResponsiveLogo)`
 export const ValueProposition = styled(H1)`
   &&& {
     padding: 24px 0;
+    width: 90%;
+    margin: 0 auto;
     text-align: center;
     span {
       font-size: inherit;

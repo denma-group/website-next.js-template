@@ -157,7 +157,6 @@ const Homepage = props => {
         </Row>
         {/* GET_TO_KNOW_US */}
         <Row
-          height={totalScreenHeight}
           styledCss={containerCss}
           alignItems="center"
           justify="center"
@@ -173,11 +172,7 @@ const Homepage = props => {
           <PromoVideo />
         </Row>
         {/* LINKS */}
-        <Row
-          height={totalScreenHeight}
-        >
-          <HelpYourBusiness />
-        </Row>
+        <HelpYourBusiness height={totalScreenHeight} />
         {/* PRIORITY/BACKGROUND PARALLAX DIVIDER */}
         <Row
           height={totalScreenHeight * 0.5}

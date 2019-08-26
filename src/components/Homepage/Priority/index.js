@@ -14,10 +14,9 @@ const Priority = () => {
 
   return (
     <Wrapper>
-      <Overlay
+      <Container
         activeSlideTheme={activeSlideTheme}
-      />
-      <Container>
+      >
         <StyledHeader
           align="center"
         >
@@ -31,35 +30,37 @@ const Priority = () => {
 };
 
 const Wrapper = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
   background-image: url(${image});
   background-attachment: fixed;
   background-position: center center;
 `;
 
-const Overlay = styled.div`
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(0deg, ${({ theme, activeSlideTheme }) => activeSlideTheme || theme.servify} 0%, ${({ theme }) => theme.primary} 100%);
-  opacity: 0.5;
-`;
-
 const Container = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  height: 100%;
+
+  :before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(0deg, ${({ theme, activeSlideTheme }) => activeSlideTheme || theme.servify} 0%, ${({ theme }) => theme.primary} 100%);
+    opacity: 0.5;
+  }
+
+  h1 {
+    z-index: 1;
+  }
 `;
 
 const StyledHeader = styled(H1)`
   &&& {
-    margin: 0 1rem;
+    margin: 1rem;
     color: ${props => props.theme.whiteColor};
     text-shadow: 1px 1px 5px ${props => props.theme.darkColor};
   }
