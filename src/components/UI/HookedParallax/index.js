@@ -7,40 +7,13 @@ import PropTypes from 'prop-types';
 import { useTranslateContent } from 'src/utils/hooks/useTranslateContext';
 import elementPageOffset from 'src/utils/elementPageOffset';
 
-const BODY_HEIGHT_SETUP_DELAY = 100;
-
 // TODO: check mobile
 const HookedParallax = props => {
-  const [innerHeightWatcher, setInnerHeightWatcher] = useState({
-    watcher: 0,
-    isReady: false,
-    timeoutId: undefined,
-  });
-  const { watcher, timeoutId, isReady } = innerHeightWatcher;
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    clearTimeout(timeoutId);
-    const newTimeoutId = setTimeout(() => {
-      setInnerHeightWatcher(oldState => ({
-      ...oldState,
-      isReady: true,
-      }));
-    }, BODY_HEIGHT_SETUP_DELAY);
-    setInnerHeightWatcher(oldState => ({
-      ...oldState,
-      timeoutId: newTimeoutId,
-      isReady: false,
-    }));
-    // We don't want to re-run this useEffect by subscribing timeoutId to avoid an infinite loop
-  }, [watcher]); // eslint-disable-line
-
-  useEffect(() => {
-    setInnerHeightWatcher(oldState => ({
-      ...oldState,
-      isReady: false,
-      watcher: scrollHeight,
-    }));
-  }, [scrollHeight]);
+    setIsReady(true);
+  }, []);
 
   // multiplierY defines how fast or slow we translate our elements
   const { multiplierY, style, children } = props;
@@ -59,9 +32,7 @@ const HookedParallax = props => {
   }, [divRef, isReady]);
 
   // Do not render component until the body's height has been set
-  if (!isReady) return null;
-
-  const { scrollHeight } = document.body;
+  if (!isReady || !rect) return null;
 
   return (
     <Container
@@ -88,6 +59,9 @@ HookedParallax.defaultProps = {
 
 const popFadeIn = keyframes`
   0% {
+    opacity: 0;
+  }
+  30%{
     opacity: 0;
   }
   100% {
