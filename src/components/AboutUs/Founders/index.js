@@ -121,6 +121,7 @@ const FounderContainer = styled.div`
   flex-direction: column;
   padding: 0 10%;
   justify-content: center;
+  position: relative;
 `;
 
 const FoundersBioContainer = styled.div`
