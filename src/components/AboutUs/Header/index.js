@@ -37,6 +37,12 @@ const Header = props => {
         <Text.H1
           css={css`
             color: ${props.theme.brandWhite};
+            @media (max-width: ${({ theme }) => theme.screenMd}) {
+              &&& {
+                font-size: 30px;
+                line-height: 40px;
+              }
+            }
           `}
         >
           Devoted to provide{' '}
@@ -88,7 +94,7 @@ const HeaderContainer = styled.div`
   flex-direction: column;
   min-height: 100vh;
   height: ${props => `${props.height - 200}px`};
-  width: 800px;
+  width: 60%;
   margin-left: 120px;
   margin-top: 200px;
   overflow: hidden;
@@ -97,8 +103,7 @@ const HeaderContainer = styled.div`
     margin-left: 60px;
   }
   @media (max-width: ${({ theme }) => theme.screenSm}) {
-    margin-top: 50px;
-    margin-left: 30px;
+    width: 80%;
   }
 `;
 

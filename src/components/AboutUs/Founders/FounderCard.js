@@ -4,14 +4,22 @@ import styled, { withTheme, css } from 'styled-components';
 import Text from 'src/components/UI/Text';
 
 const FounderCard = props => {
-  const { founder, theme } = props;
+  const { founder } = props;
 
   return (
     <CardOutside>
       {/* TODO: Remove placeholders */}
       <CircularImage src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" />
       <Card>
-        <Text.H2>{founder.name}</Text.H2>
+        <Text.H2
+          css={css`
+            @media (max-width: ${({ theme }) => theme.screenMd}) {
+              text-align: center;
+            }
+          `}
+        >
+          {founder.name}
+        </Text.H2>
         <Text.H3
           css={css`
             color: ${founder.color};
@@ -30,7 +38,7 @@ const FounderCard = props => {
 const CardOutside = styled.div`
   display: flex;
   position: relative;
-  width: 80%;
+  width: 90%;
   padding-top: 100px;
   justify-content: center;
   align-items: center;

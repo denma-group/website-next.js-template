@@ -73,7 +73,11 @@ export const Founders = props => {
       <FoundersBioContainer>
         {foundersData.map((founder, i) => (
           <CardContainer key={i.toString()}>
-            <FadeScaleIn delay={founder.delay} time={0.5}>
+            <FadeScaleIn
+              style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+              delay={founder.delay}
+              time={0.5}
+            >
               <FounderCard founder={founder} />
             </FadeScaleIn>
           </CardContainer>
@@ -94,7 +98,7 @@ export const Founders = props => {
 
 const CardContainer = styled.div`
   width: 50%;
-  @media (max-width: 900px) {
+  @media (max-width: ${({ theme }) => theme.screenMd}) {
     width: 100%;
   }
   display: flex;

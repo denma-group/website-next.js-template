@@ -68,19 +68,19 @@ const StyledSpan = styled.span`
 `;
 
 H1.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 H2.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 H3.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 P.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default {
@@ -88,5 +88,5 @@ export default {
   H2: StyledH2,
   H3: StyledH3,
   P: StyledP,
-  Span: StyledSpan
+  Span: StyledSpan,
 };

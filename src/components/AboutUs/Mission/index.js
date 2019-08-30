@@ -1,6 +1,10 @@
 import React, { useMemo } from 'react';
 import styled, { css } from 'styled-components';
 import Text from 'src/components/UI/Text';
+import Quality from 'src/components/SVG/Icons/Quality';
+import Diagram from 'src/components/SVG/Icons/Diagram';
+import Communities from 'src/components/SVG/Icons/Communities';
+import FadeScaleIn from 'src/components/UI/FadeScaleIn/index';
 
 const Mission = props => {
   const values = useMemo(
@@ -9,16 +13,22 @@ const Mission = props => {
         title: 'Commit to quality.',
         description:
           'We believe that quality is an integral part of our work. From each small detail to endless lines of code, we want to bring out the best we’ve got.',
+        icon: <Quality style={{ width: 150, height: 150 }} />,
+        delay: 0.2,
       },
       {
         title: 'Learning & growth.',
         description:
           'It’s difficult to deliver quality if the door is closed for feedback. In our company headquarters, the teams rely on one another, always learning from their different disciplines. We also believe that individual training is key, so we support and encourage it.',
+        icon: <Diagram style={{ width: 150, height: 150 }} />,
+        delay: 0.4,
       },
       {
         title: 'Empowering community',
         description:
           'Denma’s core identity is to empower other visionaries. From the very beginning we’ve experienced that having the correct form of support is what propels us forward',
+        icon: <Communities style={{ width: 150, height: 150 }} />,
+        delay: 0.6,
       },
     ],
     []
@@ -29,16 +39,24 @@ const Mission = props => {
       <Text.H1
         css={css`
           color: ${({ theme }) => theme.brandDarkRed};
+          padding-top: 100px;
         `}
       >
         Mission
       </Text.H1>
       <Text.H3
         css={css`
+          padding-top: 50px;
           &&& {
             color: ${({ theme }) => theme.brandWhite};
-            margin: 50px;
-            padding: 0 100px;
+            width: 80%;
+          }
+          @media (max-width: ${({ theme }) => theme.screenMd}) {
+            &&& {
+              margin: 50px 0;
+              padding: 0;
+              text-align: center;
+            }
           }
         `}
       >
@@ -48,25 +66,25 @@ const Mission = props => {
       <Text.H1
         css={css`
           color: ${({ theme }) => theme.brandOrange};
+          padding-top: 100px;
         `}
       >
         Values
       </Text.H1>
       {values.map((value, i) => {
         return (
-          <ValuesContainer reverse={i % 2 === 1}>
+          <ValuesContainer delay={value.delay} key={i.toString()} reverse={i % 2 === 1}>
             <TitleContainer>
-              <Text.H1>{value.title}</Text.H1>
-              <Text.H3
+              <Text.H2 style={{ paddingBottom: 10 }}>{value.title}</Text.H2>
+              <Text.P
                 css={css`
                   color: white;
                 `}
               >
                 {value.description}
-              </Text.H3>
+              </Text.P>
             </TitleContainer>
-
-            <div style={{ height: 100, width: 300, backgroundColor: 'red' }} />
+            <IconContainer>{value.icon}</IconContainer>
           </ValuesContainer>
         );
       })}
@@ -82,17 +100,30 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.lightDarkColor};
 `;
 
-const ValuesContainer = styled.div`
+const ValuesContainer = styled(FadeScaleIn)`
   display: flex;
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
   width: 80%;
+  padding: 40px 0;
+  @media (max-width: ${({ theme }) => theme.screenMd}) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
 `;
 
 const IconContainer = styled.div`
-  display: flex;
+  @media (max-width: ${({ theme }) => theme.screenMd}) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+  }
 `;
 
 const TitleContainer = styled.div`
