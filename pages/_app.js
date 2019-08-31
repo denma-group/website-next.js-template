@@ -28,18 +28,46 @@ import 'static/theme/index.scss';
  * Loading bar animation is triggered every time.
  */
 Router.events.on('routeChangeStart', () => {
+  console.log('routeChangeStart');
   NProgress.start();
 });
-Router.events.on('routeChangeComplete', () => NProgress.done());
-Router.events.on('routeChangeError', () => NProgress.done());
+Router.events.on('routeChangeComplete', () => {
+  console.log('routeChangeStart');
+  NProgress.done();
+});
+Router.events.on('routeChangeError', () => {
+  console.log('routeChangeStart');
+  NProgress.done();
+});
 
 export default class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
+    // Resolution order
+    //
+    // On the server:
+    // 1. app.getInitialProps
+    // 2. page.getInitialProps
+    // 3. document.getInitialProps
+    // 4. app.render
+    // 5. page.render
+    // 6. document.render
+    //
+    // On the server with error:
+    // 1. document.getInitialProps
+    // 2. app.render
+    // 3. page.render
+    // 4. document.render
+    //
+    // On the client
+    // 1. app.getInitialProps
+    // 2. page.getInitialProps
+    // 3. app.render
+    // 4. page.render
 
+    let pageProps = {};
     if (Component.getInitialProps) {
-      pageProps = await {
-        ...Component.getInitialProps(ctx)
+      pageProps = {
+        ...(await Component.getInitialProps(ctx))
       };
     }
 

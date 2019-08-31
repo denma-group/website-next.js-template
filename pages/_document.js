@@ -4,6 +4,9 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet as StyledComponentsServerStyleSheet } from 'styled-components';
 import { ServerStyleSheets as MuiServerStyleSheets } from '@material-ui/styles';
 
+// Polyfills
+import 'intersection-observer';
+
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     // Resolution order
@@ -27,7 +30,6 @@ export default class MyDocument extends Document {
     // 2. page.getInitialProps
     // 3. app.render
     // 4. page.render
-
 
     // Render app and page and get the context of the page with collected side effects.
     const styledComponentSheet = new StyledComponentsServerStyleSheet();
@@ -61,10 +63,7 @@ export default class MyDocument extends Document {
   render() {
     return (
       <html lang="en">
-        <Head>
-          {/* Import CSS for nprogress */}
-          <link rel="stylestyledComponentSheet" type="text/css" href="/static/nprogress.css" />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />

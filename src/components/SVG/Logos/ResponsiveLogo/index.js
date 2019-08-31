@@ -24,10 +24,10 @@ const ResponsiveLogo = props => {
         handleWidth
         onResize={onResizeHandler}
       />
-      {width >= widthBreakpoint ? (
-        <HorizontalLogo {...rest} />
-      ) : (
+      {width < widthBreakpoint ? (
         <VerticalLogo {...rest} />
+      ) : (
+        <HorizontalLogo {...rest} />
       )}
     </React.Fragment>
   ), [width, widthBreakpoint, onResizeHandler, rest]);
