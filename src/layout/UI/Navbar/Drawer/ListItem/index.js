@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
+import { Subtitle, Caption } from 'src/components/UI/Text';
 
 const Item = props => {
   const {
@@ -21,18 +21,20 @@ const Item = props => {
       button
       {...rest}
     >
-      <ListItemIcon>{icon}</ListItemIcon>
+      {icon && (
+        <ListItemIcon>{icon}</ListItemIcon>
+      )}
       <StyledListItemText
         primary={(
           <StyledListTitle
-            variant="subtitle1"
+            color="whiteColor"
           >
             {title}
           </StyledListTitle>
         )}
         secondary={(
           <StyledListCaption
-            variant="caption"
+            color="whiteColor"
             gutterBottom
           >
             {caption}
@@ -55,14 +57,14 @@ const StyledListItemText = styled(ListItemText)`
   }
 `;
 
-const StyledListTitle = styled(Typography)`
+const StyledListTitle = styled(Subtitle)`
   &&& {
     transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     font-weight: 600;
   }
 `;
 
-const StyledListCaption = styled(Typography)`
+const StyledListCaption = styled(Caption)`
   &&& {
     opacity: 0.75;
     font-weight: normal;

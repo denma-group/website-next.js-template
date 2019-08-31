@@ -1,7 +1,7 @@
 // Libraries
 import React, { useContext, useState, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
-import styled, { css, withTheme } from 'styled-components';
+import { css, withTheme } from 'styled-components';
 
 // Icons
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
@@ -13,7 +13,6 @@ import { useOnScrollBgColor } from 'src/utils/hooks/useOnScrollBgColor';
 import ReactResizeDetector from 'react-resize-detector';
 import {
   Row,
-  Col,
 } from 'src/components/Layout';
 import { NavbarContext } from 'src/layout/UI/Navbar';
 import { Parallax } from 'src/components/UI';
@@ -21,19 +20,25 @@ import {
   HeroSlider,
   ActiveSlideThemeProvider,
   HelpYourBusiness,
-  BackgroundAttachedDiv,
+  Priority,
   SubscribeForm,
+  GetToKnowUs,
+  PromoVideo,
   StyledPageWrapper,
   HeroWrapper,
   LogoContainer,
   StyledLogo,
-  StyledHeroValueProposition,
+  ValueProposition,
+  WhyUsStoryLinks,
 } from 'src/components/Homepage/';
 
 const Homepage = props => {
   const { theme, isMobile } = props;
   const navbarContext = useContext(NavbarContext);
-  const setNavbarCss = navbarContext.cssState[1];
+  const [, setNavbarColor] = navbarContext.colorState;
+  const [, setNavbaBgColor] = navbarContext.backgroundColorState;
+  const [, setOpacityState] = navbarContext.opacityState;
+  const [, setBoxShadowState] = navbarContext.boxShadowState;
 
   const [totalScreenHeight, setTotalScrenHeight] = useState(0);
 
@@ -58,38 +63,30 @@ const Homepage = props => {
     switch (true) {
       case currentScrollHeight <= BRACKET_2_HEIGHT:
         // Show Navbar
-        setNavbarCss(css`
-          opacity: ${opacityRatio};
-          color: ${theme.whiteColor};
-          background-color: transparent;
-        `);
+        setNavbarColor(theme.whiteColor);
+        setNavbaBgColor('transparent');
+        setOpacityState(opacityRatio);
         break;
       case currentScrollHeight <= BRACKET_3_HEIGHT:
          // Partially hide Navbar
-        setNavbarCss(css`
-          opacity: ${opacityRatio};
-          color: ${theme.whiteColor};
-          background-color: transparent;
-          box-shadow: none;
-        `);
+        setNavbarColor(theme.whiteColor);
+        setNavbaBgColor('transparent');
+        setOpacityState(opacityRatio);
+        setBoxShadowState('none');
         break;
       case currentScrollHeight <= BRACKET_4_HEIGHT:
         // Hide Navbar
-        setNavbarCss(css`
-          opacity: ${0};
-          color: ${theme.whiteColor};
-          background-color: transparent;
-          box-shadow: none;
-        `);
+        setNavbarColor(theme.whiteColor);
+        setNavbaBgColor('transparent');
+        setOpacityState(0);
+        setBoxShadowState('none');
         break;
       case currentScrollHeight >= BRACKET_5_HEIGHT:
       default:
         // Show Navbar
-        setNavbarCss(css`
-          opacity: ${1 - opacityRatio};
-          color: ${theme.brandLightBlack};
-          background-color: ${theme.whiteColor};
-        `);
+        setNavbarColor(theme.brandLightBlack);
+        setNavbaBgColor(theme.whiteColor);
+        setOpacityState(1 - opacityRatio);
         break;
     }
   };
@@ -148,39 +145,42 @@ const Homepage = props => {
         </HeroWrapper>
         <Row
           height={totalScreenHeight}
-          styledCss={
-            css`
-              display: flex;
-              align-items: center;
-              justify-content: flex-start;
-              text-align: left;
-              max-width: 1200px;
-              margin: 100px auto 0;
-              padding: 0 40px;
-              background-color: transparent;
-            `}
+          styledCss={containerCss}
           innerRef={valuePropositionRef}
+          alignItems="center"
+          justify="center"
         >
-          <StyledHeroValueProposition variant="h1">
-            For companies who find themselves in need of <span>high-quality</span> software applications, <span>Denma</span> is a software development studio that provides personalized services with a solid methodology to <span>help</span> companies take their businesses to the <span>next level</span>.
-          </StyledHeroValueProposition>
+          <ValueProposition>
+            <span>Denma</span> develops <span>cutting-edge</span> technology for new and established companies.
+            {/* For companies who find themselves in need of <span>high-quality</span> software applications, <span>Denma</span> is a software development studio that provides personalized services with a solid methodology to <span>help</span> companies take their businesses to the <span>next level</span>. */}
+          </ValueProposition>
         </Row>
-        {/* LINKS */}
+        {/* GET_TO_KNOW_US */}
+        <Row
+          styledCss={containerCss}
+          alignItems="center"
+          justify="center"
+        >
+          <GetToKnowUs />
+        </Row>
+        {/* PROMO VIDEO */}
         <Row
           height={totalScreenHeight}
+          alignItems="center"
+          justify="center"
         >
-          <HelpYourBusiness />
+          <PromoVideo />
         </Row>
-        {/* DIVIDER */}
+        {/* LINKS */}
+        <HelpYourBusiness height={totalScreenHeight} />
+        {/* PRIORITY/BACKGROUND PARALLAX DIVIDER */}
         <Row
           height={totalScreenHeight * 0.5}
         >
-          <BackgroundAttachedDiv />
+          <Priority />
         </Row>
-        {/* HERO-SLIDER */}
-        <Row
-          height={0.9 * (totalScreenHeight - 64)}
-        >
+        {/* HERO_SLIDER */}
+        <Row>
           <HeroSlider
             isMobile={isMobile}
             settings={{
@@ -194,6 +194,12 @@ const Homepage = props => {
             }}
           />
         </Row>
+        {/* WHY US/OUR STORY LINKS */}
+        <Row
+          height="auto"
+        >
+          <WhyUsStoryLinks />
+        </Row>
         {/* SUBSCRIBE TO US FORM */}
         <Row
           height="auto"
@@ -204,6 +210,17 @@ const Homepage = props => {
     </ActiveSlideThemeProvider>
   ), [totalScreenHeight, valuePropositionRef, isMobile]);
 };
+
+const containerCss = css`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 18px;
+  background-color: transparent;
+`;
 
 Homepage.propTypes = {
   isMobile: PropTypes.bool.isRequired,

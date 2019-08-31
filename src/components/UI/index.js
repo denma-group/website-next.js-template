@@ -1,14 +1,20 @@
 // Libraries
+import DropdownMenu from './DropdownMenu';
+import Fab from './Fab';
+import Image from './Image';
 import LazyImage from './LazyImage';
-import LazyImport from './LazyImport';
 import Loader from './Loader';
 import LogoLoader from './LogoLoader';
 import Parallax from './Parallax';
+import * as Text from './Text';
 
 export {
+  DropdownMenu,
+  Fab,
+  Image,
   LazyImage,
-  LazyImport,
   Loader,
   LogoLoader,
-  Parallax
+  Parallax,
+  Text,
 };
