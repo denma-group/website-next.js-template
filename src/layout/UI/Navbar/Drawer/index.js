@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 // Components
+import Link from 'next/link';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -12,7 +13,8 @@ import { renderDrawerLinks } from '../links';
 
 const NavbarDrawer = props => {
   const {
-    drawerLogo,
+    logo,
+    logoHref = '/', // Defaults to root address.
     open,
     closeDrawer,
     links,
@@ -21,12 +23,14 @@ const NavbarDrawer = props => {
 
   const fullList = (
     <DrawerList>
-      {drawerLogo && (
+      {logo && (
         <React.Fragment>
           <LogoWrapper>
-            <a role="button">
-              {drawerLogo}
-            </a>
+            <Link href={logoHref}>
+              <a role="button">
+                {logo}
+              </a>
+            </Link>
             <IconButton
               color="inherit"
               aria-label="Menu"
@@ -67,10 +71,11 @@ const NavbarDrawer = props => {
 };
 
 NavbarDrawer.propTypes = {
-  drawerLogo: PropTypes.node.isRequired,
+  logo: PropTypes.node.isRequired,
   open: PropTypes.bool.isRequired,
   closeDrawer: PropTypes.func.isRequired,
   links: PropTypes.instanceOf(Array).isRequired,
+  logoHref: PropTypes.string,
 };
 
 const StyledDrawer = styled(Drawer)`

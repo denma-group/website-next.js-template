@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 // Components
+import Link from 'next/link';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -14,41 +15,45 @@ const Item = props => {
     icon,
     title,
     caption,
+    href,
     ...rest
   } = props;
   return (
-    <StyledListItem
-      button
-      {...rest}
-    >
-      {icon && (
-        <ListItemIcon>{icon}</ListItemIcon>
-      )}
-      <StyledListItemText
-        primary={(
-          <StyledListTitle
-            color="whiteColor"
-          >
-            {title}
-          </StyledListTitle>
+    <Link href={href}>
+      <StyledListItem
+        button
+        {...rest}
+      >
+        {icon && (
+          <ListItemIcon>{icon}</ListItemIcon>
         )}
-        secondary={(
-          <StyledListCaption
-            color="whiteColor"
-            gutterBottom
-          >
-            {caption}
-          </StyledListCaption>
-        )}
-      />
-    </StyledListItem>
+        <StyledListItemText
+          primary={(
+            <StyledListTitle
+              color="whiteColor"
+            >
+              {title}
+            </StyledListTitle>
+          )}
+          secondary={(
+            <StyledListCaption
+              color="whiteColor"
+              gutterBottom
+            >
+              {caption}
+            </StyledListCaption>
+          )}
+        />
+      </StyledListItem>
+    </Link>
   );
 };
 
 Item.propTypes = {
   icon: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
-  caption: PropTypes.string.isRequired
+  caption: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
 };
 
 const StyledListItemText = styled(ListItemText)`

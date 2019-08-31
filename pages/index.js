@@ -227,4 +227,9 @@ Homepage.propTypes = {
   theme: PropTypes.instanceOf(Object).isRequired
 };
 
+Homepage.getInitialProps = async ({ req }) => {
+  const userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
+  return { userAgent };
+};
+
 export default withTheme(Homepage);

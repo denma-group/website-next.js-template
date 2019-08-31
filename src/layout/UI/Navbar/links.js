@@ -15,6 +15,7 @@ import ExistingAppsIcons from '@material-ui/icons/Apps';
 // import TechConsultingIcon from '@material-ui/icons/PhoneIphone';
 
 // Components
+import Link from 'next/link';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from 'src/layout/UI/Navbar/Drawer/ListItem';
@@ -32,6 +33,7 @@ const links = [
     title: 'What we do',
     caption: 'An overview of how we work alongside our clients.',
     icon: <InfoIcon />,
+    href: '/what-we-do',
   },
   {
     key: 'about us',
@@ -40,6 +42,7 @@ const links = [
     title: 'About us',
     caption: 'Who we are',
     icon: <ExistingAppsIcons />,
+    href: '/about-us',
   },
   {
     key: 'why_us',
@@ -48,6 +51,7 @@ const links = [
     title: 'Why us?',
     caption: 'Why us? caption',
     icon: <NewEnterprisesIcon />,
+    href: '/why-us',
   },
   {
     key: 'contact_us',
@@ -56,6 +60,7 @@ const links = [
     title: 'Contact us',
     caption: 'Say hello, get in touch with us!',
     icon: <ContactIcon />,
+    href: '/contact-us',
   }
 ];
 
@@ -102,14 +107,16 @@ const renderNavLinks = (navLinks = []) => navLinks.map((link, index) => {
       );
     }
     case 'button': {
-      const { key, color, title } = link;
+      const { key, color, title, href } = link;
       return (
-        <Button
-          key={key}
-          color={color}
-        >
-          {title}
-        </Button>
+        <Link href={href}>
+          <Button
+            key={key}
+            color={color}
+          >
+            {title}
+          </Button>
+        </Link>
       );
     }
     default:
@@ -160,7 +167,7 @@ const renderDrawerLinks = (navLinks = [], listItemProps) => navLinks.map((link, 
       );
     }
     case 'button': {
-      const { key, icon, title, caption } = link;
+      const { key, icon, title, caption, href } = link;
       return (
         <React.Fragment
           key={key}
@@ -170,6 +177,7 @@ const renderDrawerLinks = (navLinks = [], listItemProps) => navLinks.map((link, 
             title={title}
             icon={icon}
             caption={caption}
+            href={href}
           />
           <Divider />
         </React.Fragment>

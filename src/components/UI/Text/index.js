@@ -1,7 +1,7 @@
 // Libraries
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css as styledCss } from 'styled-components';
+import styled from 'styled-components';
 
 // Components
 import Typography from '@material-ui/core/Typography';

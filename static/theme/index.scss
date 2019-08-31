@@ -11,6 +11,7 @@ ol {
 }
 
 body {
+  overflow-x: hidden;
   will-change: background-color;
   transition: background-color ease 300ms;
 }
