@@ -8,6 +8,7 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 
 // Dependencies
 import { useOnScrollBgColor } from 'src/utils/hooks/useOnScrollBgColor';
+import getUserAgentProps from 'src/utils/getUserAgentProps';
 
 // Components
 import ReactResizeDetector from 'react-resize-detector';
@@ -225,11 +226,6 @@ const containerCss = css`
 Homepage.propTypes = {
   isMobile: PropTypes.bool.isRequired,
   theme: PropTypes.instanceOf(Object).isRequired
-};
-
-Homepage.getInitialProps = async ({ req }) => {
-  const userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
-  return { userAgent };
 };
 
 export default withTheme(Homepage);

@@ -1,8 +1,14 @@
+// Libraries
 import React, { useRef } from 'react';
 import styled, { withTheme } from 'styled-components';
+
+// Dependencies
+import getUserAgentProps from 'src/utils/getUserAgentProps';
+
+// Components
 import { Header, Founder, Mission } from 'src/components/AboutUs';
 
-const AboutUs = () => {
+const AboutUs = withTheme(() => {
   const founderRef = useRef(null);
 
   return (
@@ -14,7 +20,7 @@ const AboutUs = () => {
       </>
     </Container>
   );
-};
+});
 
 const Container = styled.div`
   color: ${props => props.theme.whiteColor};
@@ -23,4 +29,4 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.lightDarkColor};
 `;
 
-export default withTheme(AboutUs);
+export default AboutUs;

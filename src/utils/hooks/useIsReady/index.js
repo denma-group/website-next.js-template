@@ -10,7 +10,6 @@ export const useIsReady = () => {
   }, [isReady]);
 
   useEffect(() => {
-    console.log('zzz windowY:', window.scrollY);
     if (window.scrollY === 0) {
       setIsReady(true);
     } else {
@@ -23,7 +22,8 @@ export const useIsReady = () => {
     }
 
     return () => window.removeEventListener('scroll', initialScroll);
-  }, []);
+    // initialScroll is only supposed to run once.
+  }, []); // eslint-disable-line
 
   return { isReady, setIsReady };
 };
