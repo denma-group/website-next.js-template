@@ -1,11 +1,14 @@
-import React, { useRef, useMemo, useState, useCallback } from 'react';
+// Libraries
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme, css } from 'styled-components';
+
+// Components
 import ReactResizeDetector from 'react-resize-detector';
 import HookedParallax from 'src/components/UI/HookedParallax';
 import Button from '@material-ui/core/Button';
-import Text from 'src/components/UI/Text';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import * as Text from 'src/components/UI/Text';
 
 const Header = props => {
   // States

@@ -91,7 +91,7 @@ const DrawerList = styled.div`
 
 export {
   NavbarLogo,
-  DrawerLogo,
+  // DrawerLogo,
   Spacing,
   Header,
   Divider,

@@ -1,10 +1,13 @@
+// Libraries
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import Text from 'src/components/UI/Text';
 import styled, { withTheme, css } from 'styled-components';
+
+// Components
 import HookedParallax from 'src/components/UI/HookedParallax';
 import FadeScaleIn from 'src/components/UI/FadeScaleIn';
 import FounderCard from 'src/components/AboutUs/Founders/FounderCard';
+import * as Text from 'src/components/UI/Text';
 
 export const Founders = props => {
   const foundersData = useMemo(

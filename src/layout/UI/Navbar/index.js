@@ -1,14 +1,16 @@
 // Libraries
 import React, { useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 // Components
+import Link from 'next/link';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Drawer } from 'src/layout/UI';
-import { NavbarLogo, Spacing } from './components';
+import { Spacing } from './components';
 
 // Dependencies
 import Provider, { NavbarContext as Context } from './context';
@@ -20,23 +22,12 @@ import { links, getShouldRenderDrawerIcon, renderNavLinks } from './links';
 export const NavbarContext = Context;
 export const NavbarProvider = Provider;
 
-const navbarLogo = (
-  <NavbarLogo
-    alt="Denma Home"
-    title="Denma Home"
-    focusable="false"
-  />
-);
-
-const drawerLogo = (
-  <NavbarLogo
-    alt="Denma Home"
-    title="Denma Home"
-    focusable="false"
-  />
-);
-
-const Navbar = () => {
+const Navbar = props => {
+  const {
+    navbarLogo,
+    drawerLogo,
+    logoHref = '/',
+  } = props;
   const [isDrawerOpen, setDrawerOpen] = useState(false);
 
   const navbarContext = useContext(NavbarContext);
@@ -63,9 +54,11 @@ const Navbar = () => {
         styledCss={styledCss}
       >
         <Toolbar>
-          <a role="button">
-            {navbarLogo}
-          </a>
+          <Link href="/">
+            <a role="button">
+              {navbarLogo}
+            </a>
+          </Link>
           <div className="spacing" />
           {renderNavLinks(links)}
           <StyledIconButton
@@ -83,7 +76,8 @@ const Navbar = () => {
         anchor="right"
         open={isDrawerOpen}
         closeDrawer={() => setDrawerOpen(false)}
-        drawerLogo={drawerLogo}
+        logo={drawerLogo}
+        logoHref={logoHref}
         links={links}
       />
     </React.Fragment>
@@ -91,7 +85,7 @@ const Navbar = () => {
 };
 
 const StyledAppBar = styled(({ color, backgroundColor, opacity, boxShadow, transform, styledCss, ...rest }) => <AppBar {...rest} />)`
-  && {
+  &&& {
     ${props => (
       css`
         color: ${props.color || props.theme.brandLightBlack};
@@ -109,6 +103,10 @@ const StyledAppBar = styled(({ color, backgroundColor, opacity, boxShadow, trans
     ${props => (props.styledCss && props.styledCss)}
     transition: all ease 150ms;
     transition-property: color, background-color, opacity;
+
+    a:any-link, a:-webkit-any-link {
+      color: unset;
+    }
 
     .spacing {
       flex-grow: 1;
@@ -152,5 +150,16 @@ const StyledIconButton = styled(({ shouldRenderDrawerIcon, ...rest }) => <IconBu
     }
   `}
 `;
+
+Navbar.propTypes = {
+  navbarLogo: PropTypes.node.isRequired,
+  logoHref: PropTypes.string,
+  drawerLogo: PropTypes.node,
+};
+
+Navbar.defaultProps = {
+  logoHref: undefined,
+  drawerLogo: null,
+};
 
 export default Navbar;

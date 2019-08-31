@@ -19,6 +19,7 @@ import {
   NavbarProvider,
   PageWrapper
 } from 'src/layout/UI';
+import { NavbarLogo } from 'src/components/UI';
 
 // Styles
 import 'static/theme/index.scss';
@@ -28,17 +29,22 @@ import 'static/theme/index.scss';
  * Loading bar animation is triggered every time.
  */
 Router.events.on('routeChangeStart', () => {
-  console.log('routeChangeStart');
   NProgress.start();
 });
 Router.events.on('routeChangeComplete', () => {
-  console.log('routeChangeStart');
   NProgress.done();
 });
 Router.events.on('routeChangeError', () => {
-  console.log('routeChangeStart');
   NProgress.done();
 });
+
+const navbarLogo = (
+  <NavbarLogo
+    alt="Denma Home"
+    title="Denma Home"
+    focusable="false"
+  />
+);
 
 export default class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -72,7 +78,9 @@ export default class MyApp extends App {
     }
 
     // Determining if the user is on a mobile device.
-    const isMobile = await userAgent(ctx && ctx.req.headers['user-agent']);
+    const isMobile = await userAgent(ctx && ctx.req && ctx.req.headers['user-agent']);
+    console.log('ctx', ctx)
+    console.log('isMobile', isMobile);
     pageProps.isMobile = isMobile;
 
     return { pageProps };
@@ -96,7 +104,10 @@ export default class MyApp extends App {
             <CssBaseline />
             {/* Website */}
             <NavbarProvider>
-              <Navbar />
+              <Navbar
+                navbarLogo={navbarLogo}
+                drawerLogo={navbarLogo}
+              />
               <PageWrapper>
                 <Component {...pageProps} />
               </PageWrapper>

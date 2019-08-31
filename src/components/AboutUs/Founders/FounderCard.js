@@ -1,7 +1,10 @@
+// Libraries
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme, css } from 'styled-components';
-import Text from 'src/components/UI/Text';
+
+// Components
+import * as Text from 'src/components/UI/Text';
 
 const FounderCard = props => {
   const { founder } = props;
@@ -79,7 +82,6 @@ const CornerDecoration = styled.div`
 
 FounderCard.propTypes = {
   founder: PropTypes.instanceOf(Object).isRequired,
-  theme: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default withTheme(FounderCard);

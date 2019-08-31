@@ -1,12 +1,15 @@
+// Libraries
 import React, { useMemo } from 'react';
 import styled, { css } from 'styled-components';
-import Text from 'src/components/UI/Text';
+
+// Components
+import * as Text from 'src/components/UI/Text';
 import Quality from 'src/components/SVG/Icons/Quality';
 import Diagram from 'src/components/SVG/Icons/Diagram';
 import Communities from 'src/components/SVG/Icons/Communities';
 import FadeScaleIn from 'src/components/UI/FadeScaleIn/index';
 
-const Mission = props => {
+const Mission = () => {
   const values = useMemo(
     () => [
       {
@@ -71,23 +74,21 @@ const Mission = props => {
       >
         Values
       </Text.H1>
-      {values.map((value, i) => {
-        return (
-          <ValuesContainer delay={value.delay} key={i.toString()} reverse={i % 2 === 1}>
-            <TitleContainer>
-              <Text.H2 style={{ paddingBottom: 10 }}>{value.title}</Text.H2>
-              <Text.P
-                css={css`
-                  color: white;
-                `}
-              >
-                {value.description}
-              </Text.P>
-            </TitleContainer>
-            <IconContainer>{value.icon}</IconContainer>
-          </ValuesContainer>
-        );
-      })}
+      {values.map((value, i) => (
+        <ValuesContainer delay={value.delay} key={i.toString()} reverse={i % 2 === 1}>
+          <TitleContainer>
+            <Text.H2 style={{ paddingBottom: 10 }}>{value.title}</Text.H2>
+            <Text.P
+              css={css`
+                color: white;
+              `}
+            >
+              {value.description}
+            </Text.P>
+          </TitleContainer>
+          <IconContainer>{value.icon}</IconContainer>
+        </ValuesContainer>
+      ))}
     </Container>
   );
 };
