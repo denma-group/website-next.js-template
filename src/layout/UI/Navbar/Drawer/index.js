@@ -78,6 +78,10 @@ NavbarDrawer.propTypes = {
   logoHref: PropTypes.string,
 };
 
+NavbarDrawer.defaultProps = {
+  logoHref: undefined,
+};
+
 const StyledDrawer = styled(Drawer)`
   &&& {
     > *:not(:first-of-type) {

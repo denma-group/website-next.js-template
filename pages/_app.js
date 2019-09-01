@@ -10,7 +10,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { mainTheme as theme } from 'static/theme/index';
 
 // Dependencies
-import userAgent from 'src/utils/userAgent';
+import getUserAgent from 'src/utils/userAgent';
 
 // Components
 import {
@@ -77,10 +77,13 @@ export default class MyApp extends App {
       };
     }
 
+    let isMobile;
     // Determining if the user is on a mobile device.
-    const isMobile = await userAgent(ctx && ctx.req && ctx.req.headers['user-agent']);
-    console.log('ctx', ctx)
-    console.log('isMobile', isMobile);
+    if (pageProps.userAgent) {
+      isMobile = await getUserAgent(pageProps.userAgent);
+    } else {
+      isMobile = await getUserAgent(ctx && ctx.req && ctx.req.headers['user-agent']);
+    }
     pageProps.isMobile = isMobile;
 
     return { pageProps };
@@ -94,7 +97,16 @@ export default class MyApp extends App {
     }
   }
 
+  getIsMobile = () => {
+    if (typeof navigator !== 'undefined') {
+      const { userAgent } = navigator;
+      return getUserAgent(userAgent);
+    }
+    return false;
+  }
+
   render() {
+    const isMobile = this.getIsMobile();
     const { Component, pageProps } = this.props;
     return (
       <Container>
@@ -109,7 +121,10 @@ export default class MyApp extends App {
                 drawerLogo={navbarLogo}
               />
               <PageWrapper>
-                <Component {...pageProps} />
+                <Component
+                  isMobile={isMobile}
+                  {...pageProps}
+                />
               </PageWrapper>
               <Footer />
             </NavbarProvider>
