@@ -45,6 +45,8 @@ const nextConfiguration = {
     );
     return config;
   },
+  target: 'serverless',
+  publicRuntimeConfig: false
 };
 
 module.exports = withPlugins([
