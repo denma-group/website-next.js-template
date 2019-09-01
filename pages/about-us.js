@@ -2,9 +2,6 @@
 import React, { useRef } from 'react';
 import styled, { withTheme } from 'styled-components';
 
-// Dependencies
-import getUserAgentProps from 'src/utils/getUserAgentProps';
-
 // Components
 import { Header, Founder, Mission } from 'src/components/AboutUs';
 

@@ -8,7 +8,6 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 
 // Dependencies
 import { useOnScrollBgColor } from 'src/utils/hooks/useOnScrollBgColor';
-import getUserAgentProps from 'src/utils/getUserAgentProps';
 
 // Components
 import ReactResizeDetector from 'react-resize-detector';
