@@ -3,7 +3,6 @@ import React, { useRef } from 'react';
 import styled, { withTheme } from 'styled-components';
 
 // Components
-import * as Text from 'src/components/UI/Text/index';
 import { Design, Develop, Deliver, Maintain } from 'src/components/WhatWeDo';
 
 const WhatWeDo = withTheme(() => {
