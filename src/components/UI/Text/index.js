@@ -52,6 +52,7 @@ const StyledH1 = styled(H1)`
   &&& {
     font-size: 42px;
     line-height: 64px;
+    font-weight: 500;
     @media (max-width: ${({ theme }) => theme.screenMd}) {
       font-size: 36px;
       line-height: 58px;
@@ -173,7 +174,7 @@ const StyledSpan = styled.span`
 `;
 
 const propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 H1.propTypes = propTypes;
