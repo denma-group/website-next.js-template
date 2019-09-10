@@ -17,9 +17,7 @@ const Priority = () => {
         <StyledHeader
           align="center"
         >
-          We forgo the redundant and focus on <span>generating value for your company</span>.
-          Our team knows that responsiveness is key for your project, and we’re here to
-          tailor to your specific needs.
+          Are you ready to invest in your <span>vision</span>?
         </StyledHeader>
       </Container>
     </Wrapper>
@@ -27,7 +25,7 @@ const Priority = () => {
 };
 
 const Wrapper = styled.div`
-  background-position: center center;
+  width: 100%;
 `;
 
 const Container = styled.div`
@@ -47,7 +45,7 @@ const Container = styled.div`
     background-image: ${({ theme, activeSlideTheme }) => css`
       linear-gradient(0deg, ${theme.whiteColor} 75%, ${activeSlideTheme || theme.servify} 100%)
     `};
-    opacity: 0.1;
+    opacity: 0.25;
   }
 
   h1 {

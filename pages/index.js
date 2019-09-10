@@ -21,7 +21,7 @@ import {
   ActiveSlideThemeProvider,
   HelpYourBusiness,
   Priority,
-  SubscribeForm,
+  ContactUs,
   GetToKnowUs,
   PromoVideo,
   StyledPageWrapper,
@@ -151,8 +151,7 @@ const Homepage = props => {
           justify="center"
         >
           <ValueProposition>
-            <span>Denma</span> develops <span>cutting-edge</span> technology for new and established companies.
-            {/* For companies who find themselves in need of <span>high-quality</span> software applications, <span>Denma</span> is a software development studio that provides personalized services with a solid methodology to <span>help</span> companies take their businesses to the <span>next level</span>. */}
+            <span>Denma</span> develops <span>digital products</span> for visionary companies.
           </ValueProposition>
         </Row>
         {/* GET_TO_KNOW_US */}
@@ -205,7 +204,7 @@ const Homepage = props => {
         <Row
           height="auto"
         >
-          <SubscribeForm />
+          <ContactUs />
         </Row>
       </StyledPageWrapper>
     </ActiveSlideThemeProvider>

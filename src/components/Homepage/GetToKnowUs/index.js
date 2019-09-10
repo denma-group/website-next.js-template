@@ -17,45 +17,38 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 
-
 const GetToKnowUs = () => (
   <Container>
     <Title>
-      <span>Get to know us.</span>
+      <span>Get to know us</span>
     </Title>
     <P>
       We are experts in high-quality design and development of both mobile and web applications. Here in Denma, we will
       help you in all the stages of your venture:
-      {/* <ul>
-        <li>Design: Functionality with dazzling visuals. Guaranteed.</li>
-        <li>Develop: We develop for you and with you. You’re the team’s priority.</li>
-        <li>Deliver: Have a working beta in record time.</li>
-        <li>Maintain: Sometimes you need a little help. We’re here for you.</li>
-      </ul> */}
     </P>
     <StyledList>
         {[
           {
             key: 'design',
-            primary: <React.Fragment><b>Design:</b> Functionality with dazzling visuals. Guaranteed.</React.Fragment>,
+            primary: <><b>Design:</b> Functionality with dazzling visuals. Guaranteed.</>,
             secondary: 'Design - ("See more" maybe?)',
             icon: <DesignIcon />,
           },
           {
             key: 'develop',
-            primary: <React.Fragment><b>Develop:</b> We develop for you and with you. You’re the team’s priority.</React.Fragment>,
+            primary: <><b>Develop:</b> We develop for you and with you. You’re the team’s priority.</>,
             secondary: 'Develop - ("See more" maybe?)',
             icon: <DevelopIcon />,
           },
           {
             key: 'deliver',
-            primary: <React.Fragment><b>Deliver:</b> Have a working beta in record time.</React.Fragment>,
+            primary: <><b>Deliver:</b> Have a working beta in record time.</>,
             secondary: 'Deliver - ("See more" maybe?)',
             icon: <DeliverIcon />,
           },
           {
             key: 'maintain',
-            primary: <React.Fragment><b>Maintain:</b> Sometimes people need a little help. We’re here for you.</React.Fragment>,
+            primary: <><b>Maintain:</b> Sometimes people need a little help. We’re here for you.</>,
             secondary: 'Maintain - ("See more" maybe?)',
             icon: <MaintainIcon />,
           },
@@ -113,7 +106,6 @@ const Title = styled(H1)`
     text-align: center;
     span {
       font-size: inherit;
-      line-height: inherit;
       font-weight: 500;
       color: ${props => props.theme.primary}
     }
@@ -130,7 +122,6 @@ const StyledList = styled(List)`
     }
     b {
       font-size: inherit;
-      line-height: inherit;
       color: ${props => props.theme.primary}
     }
   }

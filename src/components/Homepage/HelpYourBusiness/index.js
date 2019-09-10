@@ -16,7 +16,7 @@ import {
   Col,
 } from 'src/components/Layout';
 
-const ANIMATION_TIMEOUT = 1000;
+const ANIMATION_TIMEOUT = 650;
 
 const HelpYourBusiness = ({ totalScreenHeight }) => {
   const [hasLoaded, setLoaded] = useState(false);
@@ -46,14 +46,12 @@ const HelpYourBusiness = ({ totalScreenHeight }) => {
       >
         <Help alignItems="center" justifyContent="center" sm={12} md={7} ref={ref}>
           <StyledH2>
-            We’re committed to improve your ventures.
+            We’re committed to improve your ventures
           </StyledH2>
           <StyledH3>
-            We’ve experienced the cumbersome project management approach given by big firms. We <span>forgo</span> the <span>redundant</span> and <span>focus</span> on <span>generating value</span> for <span>your</span> company.
-          </StyledH3>
-          <br />
-          <StyledH3>
-            Our team knows that <span>responsiveness is key</span> for your project, and we’re here to tailor to your specific needs. And most <span>importantly</span>, you’re our team’s <span>priority</span>.
+            We’ve experienced the cumbersome project management approach given by big firms.
+            We <span>forgo</span> the <span>redundant</span> and <span>focus</span> on
+            <span>generating value</span> for <span>your</span> company.
           </StyledH3>
         </Help>
       </CSSTransition>
@@ -94,8 +92,8 @@ const Wrapper = styled(Row)`
     .pitch-enter-active, .image-enter-active {
       opacity: 1;
       transform: translateX(0);
-      transition: opacity 500ms, transform 500ms;
-      transition-delay: 500ms;
+      transition: opacity ${ANIMATION_TIMEOUT / 2}ms, transform ${ANIMATION_TIMEOUT / 2}ms;
+      transition-delay: ${ANIMATION_TIMEOUT / 2}ms;
     }
     .pitch-exit, .image-exit {
       opacity: 1;
@@ -103,15 +101,15 @@ const Wrapper = styled(Row)`
     .pitch-exit-active, .image-exit-active {
       opacity: 0;
       transform: scale(0.9);
-      transition: opacity 500ms, transform 500ms;
-      transition-delay: 500ms;
+      transition: opacity ${ANIMATION_TIMEOUT / 2}ms, transform ${ANIMATION_TIMEOUT / 2}ms;
+      transition-delay: ${ANIMATION_TIMEOUT / 2}ms;
     }
 
     .image-enter-active {
-      transition-delay: 1000ms;
+      transition-delay: ${ANIMATION_TIMEOUT}ms;
     }
     .image-exit-active {
-      transition-delay: 1000ms;
+      transition-delay: ${ANIMATION_TIMEOUT}ms;
     }
   }
 `;
@@ -142,34 +140,30 @@ const ImageContainer = styled(Col)`
 
 const StyledH2 = styled(H2)`
   &&& {
-    font-size: 54px;
-    line-height: 64px;
     margin-bottom: 1em;
+    line-height: 1.5;
     font-weight: 700;
     color: ${props => props.theme.primary};
     text-align: center;
+    font-size: 44px;
 
     @media (max-width: ${({ theme }) => theme.screenMd}) {
-      font-size: 48px;
-      line-height: 58px;
-      margin-bottom: 1.25em;
+      font-size: 36px;
     }
 
     @media (max-width: ${({ theme }) => theme.screenSm}) {
-      font-size: 36px;
-      line-height: 52px;
+      font-size: 28px;
     }
 
     @media (max-width: ${({ theme }) => theme.screenXs}) {
-      font-size: 28px;
-      line-height: 36px;
+      font-size: 20px;
     }
   }
 `;
 
 const StyledH3 = styled(H3)`
   &&& {
-    text-align: justify;
+    text-align: center;
     span {
       color: ${props => props.theme.primary};
       font-weight: 400;
