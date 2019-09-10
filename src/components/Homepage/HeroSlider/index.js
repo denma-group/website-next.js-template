@@ -3,11 +3,16 @@ import React, { useState, useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
 
+// Dependencies
+import servifyBg from 'static/images/hero_slider/servify/slide-bg.jpg';
+import bopreuFoodsBg from 'static/images/hero_slider/bonpreu_foods/slide-bg.jpg';
+import tireOutletBg from 'static/images/hero_slider/tire_outlet/slide-bg.jpg';
+
 // Components
 import HeroSlider, {
-  Slide,
   Nav
 } from 'hero-slider';
+import SlideWrapper from './SlideWrapper';
 import Servify from './Slides/Servify';
 import BonpreuFoods from './Slides/BonpreuFoods';
 import TireOutlet from './Slides/TireOutlet';
@@ -52,6 +57,37 @@ const Slider = props => {
     }
   };
 
+  const slidesBackgrounds = {
+    shouldLazyLoad: false,
+    backgroundAttachment: 'fixed',
+    backgroundPosition: 'center center',
+    backgroundSize: 'cover',
+  };
+
+  const slides = [
+    {
+      key: 'servify',
+      slide: Servify,
+      overlay: theme.servify,
+      backgroundImage: servifyBg,
+      background: slidesBackgrounds
+    },
+    {
+      key: 'bonpreu_foods',
+      slide: BonpreuFoods,
+      overlay: theme.bonpreuFoods,
+      backgroundImage: bopreuFoodsBg,
+      background: slidesBackgrounds
+    },
+    {
+      key: 'tire_outlet',
+      slide: TireOutlet,
+      overlay: theme.tireOutlet,
+      backgroundImage: tireOutletBg,
+      background: slidesBackgrounds
+    },
+  ];
+
   return (
     <HeroSlider
       slidingAnimation="left_to_right"
@@ -62,32 +98,18 @@ const Slider = props => {
     >
       {props.children}
       {/* SERVIFY */}
-      <Slide
-        background={{
-          shouldLazyLoad: false,
-          backgroundColor: theme.servify
-        }}
-      >
-        <Servify />
-      </Slide>
-      {/* BONPREU? */}
-      <Slide
-        background={{
-          shouldLazyLoad: false,
-          backgroundColor: theme.bonpreuFoods
-        }}
-      >
-        <BonpreuFoods />
-      </Slide>
-      {/* TIRE OUTLETS */}
-      <Slide
-        background={{
-          shouldLazyLoad: false,
-          backgroundColor: theme.tireOutlet
-        }}
-      >
-        <TireOutlet />
-      </Slide>
+      {slides.map(({ key, slide: SlideComponent, overlay, backgroundImage, background }) => (
+        <SlideWrapper
+          key={key}
+          background={{
+            ...background,
+            backgroundImage,
+          }}
+          overlayColor={overlay}
+        >
+          <SlideComponent />
+        </SlideWrapper>
+      ))}
       <Nav />
     </HeroSlider>
   );

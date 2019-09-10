@@ -157,6 +157,7 @@ const Homepage = props => {
         </Row>
         {/* GET_TO_KNOW_US */}
         <Row
+          height={totalScreenHeight}
           styledCss={containerCss}
           alignItems="center"
           justify="center"
@@ -173,18 +174,12 @@ const Homepage = props => {
         </Row>
         {/* LINKS */}
         <HelpYourBusiness height={totalScreenHeight} />
-        {/* PRIORITY/BACKGROUND PARALLAX DIVIDER */}
-        <Row
-          height={totalScreenHeight * 0.5}
-        >
-          <Priority />
-        </Row>
         {/* HERO_SLIDER */}
         <Row>
           <HeroSlider
             isMobile={isMobile}
             settings={{
-              slidingDuration: 250,
+              slidingDuration: 500,
               slidingDelay: 100,
               shouldAutoplay: false,
               shouldDisplayButtons: true,
@@ -193,6 +188,12 @@ const Homepage = props => {
               color: '#FFF'
             }}
           />
+        </Row>
+        {/* PRIORITY/BACKGROUND PARALLAX DIVIDER */}
+        <Row
+          height={totalScreenHeight * 0.5}
+        >
+          <Priority />
         </Row>
         {/* WHY US/OUR STORY LINKS */}
         <Row

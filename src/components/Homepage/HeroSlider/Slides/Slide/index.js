@@ -7,15 +7,27 @@ import styled from 'styled-components';
 import { LazyImage } from 'src/components/UI';
 import Typography from '@material-ui/core/Typography';
 
-const Servify = props => {
+// TODO: New Slide Structuring
+/**
+ * It will look like this:
+ * --------------------
+ *             ''
+ * LOGO   COMPANY NAME
+ * LOGO       NAME
+ * LOGO    TESTIMONIAL
+ *
+ * --------------------
+ */
+const Slide = props => {
   const {
     title,
     caption,
     src,
-    slideNumber
+    slideNumber,
+    overlayColor,
   } = props;
   return (
-    <Wrapper>
+    <Wrapper overlayColor={overlayColor}>
       <InformationContainer slideNumber={slideNumber}>
         <Typography variant="h2">{title}</Typography>
         <Typography variant="body1">{caption}</Typography>
@@ -30,11 +42,12 @@ const Servify = props => {
   );
 };
 
-Servify.propTypes = {
+Slide.propTypes = {
   title: PropTypes.string.isRequired,
   caption: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
-  slideNumber: PropTypes.number.isRequired
+  slideNumber: PropTypes.number.isRequired,
+  overlayColor: PropTypes.number.isRequired,
 };
 
 const Wrapper = styled.div`
@@ -112,4 +125,4 @@ const ImageContainer = styled.div`
   max-height: 100%;
 `;
 
-export default Servify;
+export default Slide;

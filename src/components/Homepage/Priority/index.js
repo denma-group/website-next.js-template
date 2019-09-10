@@ -1,9 +1,6 @@
 // Libraries
 import React, { useContext } from 'react';
-import styled from 'styled-components';
-
-// Dependencies
-import image from 'static/images/homepage/background-attachment-divider.jpg';
+import styled, { css } from 'styled-components';
 
 // Components
 import { H1 } from 'src/components/UI/Text';
@@ -30,8 +27,6 @@ const Priority = () => {
 };
 
 const Wrapper = styled.div`
-  background-image: url(${image});
-  background-attachment: fixed;
   background-position: center center;
 `;
 
@@ -49,8 +44,10 @@ const Container = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(0deg, ${({ theme, activeSlideTheme }) => activeSlideTheme || theme.servify} 0%, ${({ theme }) => theme.primary} 100%);
-    opacity: 0.5;
+    background-image: ${({ theme, activeSlideTheme }) => css`
+      linear-gradient(0deg, ${theme.whiteColor} 75%, ${activeSlideTheme || theme.servify} 100%)
+    `};
+    opacity: 0.1;
   }
 
   h1 {
@@ -61,12 +58,9 @@ const Container = styled.div`
 const StyledHeader = styled(H1)`
   &&& {
     margin: 1rem;
-    color: ${props => props.theme.whiteColor};
-    text-shadow: 1px 1px 5px ${props => props.theme.darkColor};
   }
   &&& span {
     color: ${props => props.theme.primary};
-    text-shadow: 1px 1px 2.5px ${props => props.theme.darkColor};
   }
   &&&, span {
     font-weight: 700;
