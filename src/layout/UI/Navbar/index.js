@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 // Components
-import Link from 'next/link';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -15,8 +14,8 @@ import { Spacing } from './components';
 // Dependencies
 import Provider, { NavbarContext as Context } from './context';
 
-// Links
-import { links, getShouldRenderDrawerIcon, renderNavLinks } from './links';
+// LinkComponents
+import { getShouldRenderDrawerIcon, renderNavLinks } from './links';
 
 // Navbar React Context exports
 export const NavbarContext = Context;
@@ -24,12 +23,17 @@ export const NavbarProvider = Provider;
 
 const Navbar = props => {
   const {
+    links,
     navbarLogo,
+    logoWrapperProps = {
+      href: '/'
+    },
     drawerLogo,
-    logoHref = '/',
+    linkComponent: LinkComponent,
   } = props;
   const [isDrawerOpen, setDrawerOpen] = useState(false);
 
+  // Styling context
   const navbarContext = useContext(NavbarContext);
   const [color] = navbarContext.colorState;
   const [backgroundColor] = navbarContext.backgroundColorState;
@@ -39,6 +43,7 @@ const Navbar = props => {
   const [transform] = navbarContext.transformState;
   const [styledCss] = navbarContext.cssState;
 
+  // Will only render the burger icon to the right if necessary
   const shouldRenderDrawerIcon = getShouldRenderDrawerIcon(links);
 
   return (
@@ -54,13 +59,13 @@ const Navbar = props => {
         styledCss={styledCss}
       >
         <Toolbar>
-          <Link href="/">
+          <LinkComponent {...logoWrapperProps}>
             <a role="button">
               {navbarLogo}
             </a>
-          </Link>
+          </LinkComponent>
           <div className="spacing" />
-          {renderNavLinks(links)}
+          {renderNavLinks(links, LinkComponent)}
           <StyledIconButton
             color="inherit"
             aria-label="Menu"
@@ -77,8 +82,9 @@ const Navbar = props => {
         open={isDrawerOpen}
         closeDrawer={() => setDrawerOpen(false)}
         logo={drawerLogo}
-        logoHref={logoHref}
+        logoWrapperProps={logoWrapperProps}
         links={links}
+        linkComponent={LinkComponent}
       />
     </React.Fragment>
   );
@@ -152,14 +158,17 @@ const StyledIconButton = styled(({ shouldRenderDrawerIcon, ...rest }) => <IconBu
 `;
 
 Navbar.propTypes = {
+  links: PropTypes.instanceOf(Array).isRequired,
   navbarLogo: PropTypes.node.isRequired,
-  logoHref: PropTypes.string,
+  logoWrapperProps: PropTypes.instanceOf(Object),
   drawerLogo: PropTypes.node,
+  linkComponent: PropTypes.func,
 };
 
 Navbar.defaultProps = {
-  logoHref: undefined,
+  logoWrapperProps: undefined,
   drawerLogo: null,
+  linkComponent: null,
 };
 
 export default Navbar;
