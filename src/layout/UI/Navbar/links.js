@@ -2,7 +2,6 @@
 import React, { useContext } from 'react';
 
 // Components
-// import Link from 'next/link';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from 'src/layout/UI/Navbar/Drawer/ListItem';
