@@ -18,6 +18,7 @@ import Typography from '@material-ui/core/Typography';
  *
  * --------------------
  */
+
 const Slide = props => {
   const {
     title,

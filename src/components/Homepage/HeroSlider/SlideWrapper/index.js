@@ -7,9 +7,11 @@ import { Slide } from 'hero-slider';
 
 const SlideWrapper = styled(({ overlayColor, ...rest }) => <Slide {...rest} />)`
   .slide-wrapper {
-    position: relative;
+    &, .slide-container {
+      position: relative;
+    }
 
-    &::before {
+    &::before, .slide-container::before {
       content: '';
       position: absolute;
       top: 0;
@@ -18,8 +20,20 @@ const SlideWrapper = styled(({ overlayColor, ...rest }) => <Slide {...rest} />)`
       height: 100%;
       pointer-events: none;
       background-color: ${({ overlayColor }) => overlayColor};
-      opacity: 0.66;
       z-index: 0;
+      opacity: 0.66;
+    }
+
+    &::before {
+      opacity: 0.5;
+    }
+
+    .slide-container::before {
+      opacity: 0.25;
+    }
+
+    .slide-background-mask {
+      opacity: 0.5;
     }
 
     > * {

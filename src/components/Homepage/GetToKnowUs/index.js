@@ -75,26 +75,27 @@ const Container = styled.div`
     text-align: justify;
     padding: 12px;
     margin: 0 auto;
-    p {
+    > p {
       max-width: 800px;
+      text-align: center;
     }
     .MuiAvatar-root {
       background-color: ${props => props.theme.primary};
     }
     @media (min-width: ${({ theme }) => theme.screenMd}) {
       .MuiTypography-root:not(h1):not(.MuiListItemText-secondary) {
-        font-size: 1.2rem !important;
+        font-size: 1.35rem !important;
       }
       .MuiListItemText-secondary {
-        font-size: 1.05rem !important;
+        font-size: 1.15rem !important;
       }
     }
     @media (max-width: ${({ theme }) => theme.screenMd}) {
       .MuiTypography-root:not(h1):not(.MuiListItemText-secondary) {
-        font-size: 1rem !important;
+        font-size: 1.1rem !important;
       }
       .MuiListItemText-secondary {
-        font-size: 0.9rem !important;
+        font-size: 1.05rem !important;
       }
     }
   }
