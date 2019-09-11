@@ -11,7 +11,7 @@ const SlideWrapper = styled(({ overlayColor, ...rest }) => <Slide {...rest} />)`
       position: relative;
     }
 
-    &::before, .slide-container::before {
+    &::before {
       content: '';
       position: absolute;
       top: 0;
@@ -22,18 +22,6 @@ const SlideWrapper = styled(({ overlayColor, ...rest }) => <Slide {...rest} />)`
       background-color: ${({ overlayColor }) => overlayColor};
       z-index: 0;
       opacity: 0.66;
-    }
-
-    &::before {
-      opacity: 0.5;
-    }
-
-    .slide-container::before {
-      opacity: 0.25;
-    }
-
-    .slide-background-mask {
-      opacity: 0.5;
     }
 
     > * {

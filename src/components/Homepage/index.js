@@ -1,6 +1,6 @@
 // Components
 import HeroSlider, { ActiveSlideThemeProvider } from 'src/components/Homepage/HeroSlider';
-import HelpYourBusiness from 'src/components/Homepage/HelpYourBusiness';
+import HelpYourVenture from 'src/components/Homepage/HelpYourVenture';
 import Priority from 'src/components/Homepage/Priority';
 import SubscribeForm from 'src/components/Homepage/SubscribeForm';
 import ContactUs from 'src/components/Homepage/ContactUs/index';
@@ -18,7 +18,7 @@ import {
 export {
   HeroSlider,
   ActiveSlideThemeProvider,
-  HelpYourBusiness,
+  HelpYourVenture,
   Priority,
   SubscribeForm,
   ContactUs,

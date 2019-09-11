@@ -15,7 +15,7 @@ import {
   Col,
 } from 'src/components/Layout';
 
-const HelpYourBusiness = props => {
+const HelpYourVenture = props => {
   const { totalScreenHeight } = props;
   return (
     <Wrapper
@@ -61,11 +61,11 @@ const HelpYourBusiness = props => {
   );
 };
 
-HelpYourBusiness.propTypes = {
+HelpYourVenture.propTypes = {
   totalScreenHeight: PropTypes.number,
 };
 
-HelpYourBusiness.defaultProps = {
+HelpYourVenture.defaultProps = {
   totalScreenHeight: undefined,
 };
 
@@ -134,4 +134,4 @@ const StyledH3 = styled(H3)`
   }
 `;
 
-export default HelpYourBusiness;
+export default HelpYourVenture;

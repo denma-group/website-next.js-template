@@ -106,7 +106,6 @@ const Slider = props => {
             backgroundImage,
           }}
           overlayColor={overlay}
-          shouldRenderMask
         >
           <SlideComponent />
         </SlideWrapper>

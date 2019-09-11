@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 // Components
 import { H1, P } from 'src/components/UI/Text';
+import { PopIn } from 'src/components/UI/Animations';
 
 // Icons
 import DesignIcon from '@material-ui/icons/DeveloperBoard';
@@ -52,17 +53,21 @@ const GetToKnowUs = () => (
             secondary: 'Maintain - ("See more" maybe?)',
             icon: <MaintainIcon />,
           },
-        ].map(({ key, primary, secondary, icon }) => (
-          <ListItem
+        ].map(({ key, primary, secondary, icon }, index) => (
+          <PopIn
+            classNames="list-item"
             key={key}
+            animationDelayMultiplier={index}
           >
-            <ListItemAvatar>
-              <Avatar>
-                {icon}
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary={primary} secondary={secondary} />
-          </ListItem>
+            <ListItem>
+              <ListItemAvatar>
+                <Avatar>
+                  {icon}
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary={primary} secondary={secondary} />
+            </ListItem>
+          </PopIn>
         ))}
     </StyledList>
   </Container>

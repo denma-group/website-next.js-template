@@ -19,7 +19,7 @@ const PopIn = props => {
     wrapper: WrapperComponent,
     shouldPopOutOnExit = false,
     animationMultiplier = 1,
-    animationDelay = ANIMATION_TIMEOUT / 2,
+    animationDelayMultiplier = 1,
     // CSSTransition props
     animationTimeout = ANIMATION_TIMEOUT,
     classNames = POP_IN_DEFAULT_CLASS,
@@ -27,13 +27,14 @@ const PopIn = props => {
     onExited,
     unmountOnExit = false,
     // Children MUST be one wrapper element at most
+    style,
     children,
     ...rest
   } = props;
   const [ref, firstInView, inView] = useElementInViewport();
 
-  const duration = animationTimeout * animationMultiplier;
-  const delay = animationDelay * animationMultiplier;
+  const delay = animationTimeout * 0.33 * animationMultiplier * animationDelayMultiplier;
+  const duration = animationTimeout * 0.66 * animationMultiplier;
 
   // A custom `Component` can be passed as a prop to use as a wrapper
   // Otherwise we fall back to a div
@@ -45,13 +46,20 @@ const PopIn = props => {
 
   return (
     <Wrapper
-      innerRef={ref}
       {...rest}
+      style={{
+        ...style,
+        opacity: !firstInView && 0,
+      }}
       className={classNames}
+      {...{
+        innerRef: WrapperComponent ? ref : null,
+        ref: !WrapperComponent ? ref : null,
+      }}
     >
       <CSSTransition
         in={shouldPopOutOnExit ? inView : firstInView}
-        timeout={animationTimeout}
+        timeout={duration + delay}
         classNames={classNames}
         onEnter={onEnter}
         onExited={onExited}
@@ -67,10 +75,11 @@ const PopIn = props => {
 
 PopIn.propTypes = {
   children: PropTypes.node.isRequired,
+  style: PropTypes.instanceOf(Object),
   wrapper: PropTypes.node,
   shouldPopOutOnExit: PropTypes.bool,
   animationMultiplier: PropTypes.number,
-  animationDelay: PropTypes.number,
+  animationDelayMultiplier: PropTypes.number,
   animationTimeout: PropTypes.number,
   delayMultiplier: PropTypes.number,
   classNames: PropTypes.string,
@@ -80,10 +89,11 @@ PopIn.propTypes = {
 };
 
 PopIn.defaultProps = {
+  style: undefined,
   wrapper: undefined,
   shouldPopOutOnExit: undefined,
   animationMultiplier: undefined,
-  animationDelay: undefined,
+  animationDelayMultiplier: undefined,
   animationTimeout: undefined,
   delayMultiplier: undefined,
   classNames: undefined,
@@ -101,8 +111,8 @@ const popInCss = (duration, delay, classNames) => css`
     .${classNames}-enter-active {
       opacity: 1;
       transform: scale(1);
-      transition: opacity ${duration / 2}ms ease-in, transform ${duration / 2}ms ;
-      transition-delay: ${delay / 2}ms;
+      transition: opacity ${duration}ms, transform ${duration}ms;
+      transition-delay: ${delay}ms;
     }
     .${classNames}-exit {
       opacity: 1;
@@ -111,8 +121,8 @@ const popInCss = (duration, delay, classNames) => css`
     .${classNames}-exit-active {
       opacity: 0;
       transform: scale(0.95);
-      transition: opacity ${duration / 2}ms, transform ${duration / 2}ms ;
-      transition-delay: ${delay / 2}ms;
+      transition: opacity ${duration}ms, transform ${duration}ms;
+      transition-delay: ${delay}ms;
     }
   }
 `;

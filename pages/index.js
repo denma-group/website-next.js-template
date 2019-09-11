@@ -19,7 +19,7 @@ import { Parallax } from 'src/components/UI';
 import {
   HeroSlider,
   ActiveSlideThemeProvider,
-  HelpYourBusiness,
+  HelpYourVenture,
   Priority,
   ContactUs,
   GetToKnowUs,
@@ -172,14 +172,14 @@ const Homepage = props => {
           <PromoVideo />
         </Row>
         {/* LINKS */}
-        <HelpYourBusiness height={totalScreenHeight} />
+        <HelpYourVenture height={totalScreenHeight} />
         {/* HERO_SLIDER */}
         <Row>
           <HeroSlider
             isMobile={isMobile}
             settings={{
               slidingDuration: 500,
-              slidingDelay: 100,
+              slidingDelay: 250,
               shouldAutoplay: false,
               shouldDisplayButtons: true,
               autoplayDuration: 20000,
