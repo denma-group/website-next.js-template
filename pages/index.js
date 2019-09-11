@@ -1,5 +1,5 @@
 // Libraries
-import React, { useContext, useState, useMemo, useRef } from 'react';
+import React, { useContext, useState, useMemo, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css, withTheme } from 'styled-components';
 
@@ -34,11 +34,11 @@ import {
 
 const Homepage = props => {
   const { theme, isMobile } = props;
-  const navbarContext = useContext(NavbarContext);
-  const [, setNavbarColor] = navbarContext.colorState;
-  const [, setNavbaBgColor] = navbarContext.backgroundColorState;
-  const [, setOpacityState] = navbarContext.opacityState;
-  const [, setBoxShadowState] = navbarContext.boxShadowState;
+  const {
+    resetCss: resetNavbarCss,
+    colorState: [, setNavbarColor],
+    backgroundColorState: [, setNavbaBgColor],
+  } = useContext(NavbarContext);
 
   const [totalScreenHeight, setTotalScrenHeight] = useState(0);
 
@@ -53,43 +53,38 @@ const Homepage = props => {
   const BRACKET_6_HEIGHT = totalScreenHeight * 1.25;
 
   const handleOnScrollBgColor = ({
-    currentScrollHeight
+    currentHeight
   }) => {
-    const totalScrollRatio = Number(currentScrollHeight / BRACKET_5_HEIGHT).toFixed(2);
-    const opacityRatio = (1 - totalScrollRatio) <= 0 ? 0 : Number(1 - totalScrollRatio).toFixed(2);
     /**
      * Navbar handlers.
      */
     switch (true) {
-      case currentScrollHeight <= BRACKET_2_HEIGHT:
+      case currentHeight <= BRACKET_2_HEIGHT:
         // Show Navbar
         setNavbarColor(theme.whiteColor);
         setNavbaBgColor('transparent');
-        setOpacityState(opacityRatio);
         break;
-      case currentScrollHeight <= BRACKET_3_HEIGHT:
-         // Partially hide Navbar
-        setNavbarColor(theme.whiteColor);
-        setNavbaBgColor('transparent');
-        setOpacityState(opacityRatio);
-        setBoxShadowState('none');
-        break;
-      case currentScrollHeight <= BRACKET_4_HEIGHT:
+      case (
+        currentHeight >= BRACKET_2_HEIGHT &&
+        currentHeight <= BRACKET_4_HEIGHT
+      ):
         // Hide Navbar
         setNavbarColor(theme.whiteColor);
         setNavbaBgColor('transparent');
-        setOpacityState(0);
-        setBoxShadowState('none');
         break;
-      case currentScrollHeight >= BRACKET_5_HEIGHT:
+      case currentHeight >= BRACKET_4_HEIGHT:
       default:
         // Show Navbar
         setNavbarColor(theme.brandLightBlack);
         setNavbaBgColor(theme.whiteColor);
-        setOpacityState(1 - opacityRatio);
         break;
     }
   };
+
+  // When this component unmounts, reset the Navbar CSS.
+  useEffect(() => () => {
+    resetNavbarCss();
+  }, []);
 
   useOnScrollBgColor(
     [
@@ -102,8 +97,7 @@ const Homepage = props => {
     ],
     {
       callback: handleOnScrollBgColor,
-      throttleLimit: 20,
-    }
+    },
   );
 
   const arrowDownOnClickHandler = () => {
