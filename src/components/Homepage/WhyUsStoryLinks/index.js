@@ -7,7 +7,7 @@ import {
   Col,
 } from 'src/components/Layout';
 import { Fab } from 'src/components/UI';
-import { H1, Subtitle } from 'src/components/UI/Text';
+import { H1, H2 } from 'src/components/UI/Text';
 
 const WhyUsStoryLinks = () => (
   <>
@@ -15,8 +15,8 @@ const WhyUsStoryLinks = () => (
       {
         key: 'team',
         title: 'The Team',
-        subtitle: 'Discover the faces behind Denma’s vision.',
-        fab: 'Our Team',
+        subtitle: 'Discover the faces behind Denma. They will guide you through the process.',
+        fab: 'Our Team'
       },
       {
         key: 'story',
@@ -30,13 +30,17 @@ const WhyUsStoryLinks = () => (
           <StyledH1>
             {title}
           </StyledH1>
-          <StyledSubtitle>
+          <StyledH2>
             {subtitle}
-          </StyledSubtitle>
+          </StyledH2>
+          <br />
           <Fab
             variant="extended"
             color="whiteColor"
             backgroundColor="primary"
+            style={{
+              minWidth: 150
+            }}
           >
             {fab}
           </Fab>
@@ -54,23 +58,23 @@ const Wrapper = styled(Col)`
 `;
 
 const Container = styled.div`
-    display: flex;
-    margin: 0 auto;
-    width: 80%;
-    height: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 12px 0;
+  display: flex;
+  margin: 0 auto;
+  width: 80%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 0;
 `;
 
-const StyledSubtitle = styled(Subtitle)`
+const StyledH2 = styled(H2)`
   &&& {
     display: flex;
     align-items: center;
     color: inherit;
     text-align: center;
-    margin: 34px 0;
+    margin: 0 auto;
     min-height: 60px;
   }
 `;
