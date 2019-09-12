@@ -36,9 +36,11 @@ const HelpYourVenture = props => {
             We’re committed to improve your ventures
           </StyledH2>
           <StyledH3>
-            We’ve experienced the cumbersome project management approach given by big firms.
-            We <span>forgo</span> the <span>redundant</span> and <span>focus</span> on
-            <span>generating value</span> for <span>your</span> company.
+            We’ve experienced the <span>cumbersome</span> project management approach given by
+            big firms. We decided to focus on <span>generating value</span> for your company,
+            knowing that <span>responsiveness</span> is <span>key</span> for your project, and we’re
+            here to tailor to <span>your</span> specific <span>needs</span>. Needless to say, you’re
+            our team’s <span>priority</span>.
           </StyledH3>
         </div>
       </PopIn>
@@ -94,7 +96,7 @@ const ImageContainer = styled(Col)`
   justify-content: center;
 
   img {
-    width: 85%;
+    width: 95%;
     margin: 30px auto 0px;
     max-height: 100%;
     max-width: 620px;

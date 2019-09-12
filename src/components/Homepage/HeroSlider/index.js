@@ -8,14 +8,17 @@ import servifyBg from 'static/images/hero_slider/servify/slide-bg.jpg';
 import bopreuFoodsBg from 'static/images/hero_slider/bonpreu_foods/slide-bg.jpg';
 import tireOutletBg from 'static/images/hero_slider/tire_outlet/slide-bg.jpg';
 
+// Assets
+import servifyLogo from 'static/images/hero_slider/servify/logo.png';
+import bonpreuFoodsLogo from 'static/images/hero_slider/bonpreu_foods/logo.png';
+import tireOutletLogo from 'static/images/hero_slider/tire_outlet/logo.png';
+
 // Components
 import HeroSlider, {
   Nav
 } from 'hero-slider';
 import SlideWrapper from './SlideWrapper';
-import Servify from './Slides/Servify';
-import BonpreuFoods from './Slides/BonpreuFoods';
-import TireOutlet from './Slides/TireOutlet';
+import Slide from './Slide';
 
 export const ActiveSlideThemeContext = React.createContext({
   activeSlideTheme: undefined
@@ -67,24 +70,33 @@ const Slider = props => {
   const slides = [
     {
       key: 'servify',
-      slide: Servify,
-      overlay: theme.servify,
+      slideColor: theme.servify,
       backgroundImage: servifyBg,
-      background: slidesBackgrounds
+      background: slidesBackgrounds,
+      title: 'Servify',
+      caption: 'Denma helped us solidify our corporate image and strategy.',
+      src: servifyLogo,
+      slideNumber: 1,
     },
     {
       key: 'bonpreu_foods',
-      slide: BonpreuFoods,
-      overlay: theme.bonpreuFoods,
+      slideColor: theme.bonpreuFoods,
       backgroundImage: bopreuFoodsBg,
-      background: slidesBackgrounds
+      background: slidesBackgrounds,
+      title: 'Bonpreu Foods',
+      caption: 'At Denma, we were treated as partners from day one.',
+      src: bonpreuFoodsLogo,
+      slideNumber: 2,
     },
     {
       key: 'tire_outlet',
-      slide: TireOutlet,
-      overlay: theme.tireOutlet,
+      slideColor: theme.tireOutlet,
       backgroundImage: tireOutletBg,
-      background: slidesBackgrounds
+      background: slidesBackgrounds,
+      title: 'Tire Outlet',
+      caption: 'Denma allowed our business to achieve web sales that we would have missed otherwise.',
+      src: tireOutletLogo,
+      slideNumber: 3,
     },
   ];
 
@@ -98,16 +110,19 @@ const Slider = props => {
     >
       {props.children}
       {/* SERVIFY */}
-      {slides.map(({ key, slide: SlideComponent, overlay, backgroundImage, background }) => (
+      {slides.map(({ key, slideColor, backgroundImage, background, ...rest }) => (
         <SlideWrapper
           key={key}
           background={{
             ...background,
             backgroundImage,
           }}
-          overlayColor={overlay}
+          overlayColor={slideColor}
         >
-          <SlideComponent />
+          <Slide
+            slideThemeColor={slideColor}
+            {...rest}
+          />
         </SlideWrapper>
       ))}
       <Nav />
