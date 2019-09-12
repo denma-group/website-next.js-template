@@ -9,8 +9,8 @@ const Design = withTheme(props => {
     () => ({
       title: 'Design',
       description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic',
-      subtitle: 'Our process',
+        'Functionality with dazzling visuals. Guaranteed. You talk directly with our lead designer, and then we create your venture’s visuals.',
+      subtitle: 'This is how we create it',
       steps: [
         {
           title: '',
@@ -37,7 +37,7 @@ const Design = withTheme(props => {
   return (
     <Container>
       <Layout data={data} />
-      <HookedParallax multiplierY={2} style={{ position: 'absolute', bottom: 0, right: 0 }}>
+      <HookedParallax multiplierY={0.4} style={{ position: 'absolute', top: 400, right: 20 }}>
         <Brush fill={props.theme.brandOrange} style={{ height: 150, width: 150 }} />
       </HookedParallax>
     </Container>

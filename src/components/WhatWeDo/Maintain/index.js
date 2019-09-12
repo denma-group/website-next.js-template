@@ -9,8 +9,8 @@ const Develop = withTheme(props => {
     () => ({
       title: 'Maintain',
       description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic',
-      subtitle: 'Our process',
+        'After handing you the final version of your product, you can count on us to keep it in top form. If you have an existing digital product and wish to update or maintain it, Denma is the choice for you.',
+      subtitle: 'How we keep your project up to date',
       steps: [
         {
           title: '',
@@ -32,12 +32,12 @@ const Develop = withTheme(props => {
       color: '#17bf63',
       icons: [],
     }),
-    [props.theme.brandRed]
+    []
   );
   return (
     <Container>
       <Layout data={data} />
-      <HookedParallax multiplierY={2} style={{ position: 'absolute', bottom: 0, left: 0 }}>
+      <HookedParallax multiplierY={0.4} style={{ position: 'absolute', top: 400, left: 20 }}>
         <Maintain fill="#17bf63" style={{ height: 150, width: 150 }} />
       </HookedParallax>
     </Container>

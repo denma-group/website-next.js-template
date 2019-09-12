@@ -16,11 +16,24 @@ const Layout = ({ data }) => {
         >
           {title}
         </Text.H1>
-        <Text.H3>{description}</Text.H3>
+        <Text.H3
+          css={css`
+            &&& {
+              margin-top: 40px;
+              text-align: justify;
+            }
+          `}
+        >
+          {description}
+        </Text.H3>
         <div style={{ marginTop: 20 }}>
           <Text.H2
             css={css`
               color: ${color};
+              &&& {
+                margin-top: 30px;
+                margin-bottom: 30px;
+              }
             `}
           >
             {subtitle}
@@ -28,9 +41,17 @@ const Layout = ({ data }) => {
         </div>
         <ProcessContainer>
           {steps.map((step, i) => (
-            <Process>
+            <Process key={i.toString()} delay={0} time={0.15}>
               <Step color={color}>
-                <Text.H1>{i + 1}</Text.H1>
+                <Text.H1
+                  css={css`
+                    &&& {
+                      color: ${({ theme }) => theme.whiteColor};
+                    }
+                  `}
+                >
+                  {i + 1}
+                </Text.H1>
               </Step>
 
               <Text.P>{step.description}</Text.P>
@@ -39,7 +60,13 @@ const Layout = ({ data }) => {
         </ProcessContainer>
       </Center>
       <Banner color={color}>
-        <Text.H2>{bannerText}</Text.H2>
+        <Text.H2
+          css={css`
+            color: ${({ theme }) => theme.whiteColor};
+          `}
+        >
+          {bannerText}
+        </Text.H2>
       </Banner>
     </Container>
   );
@@ -54,7 +81,6 @@ const Container = styled.div`
 
 const Center = styled.div`
   display: flex;
-
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -71,6 +97,7 @@ const ProcessContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   margin-top: 40px;
+  box-sizing: border-box;
   @media (max-width: ${({ theme }) => theme.screenLg}) {
     justify-content: center;
   }
@@ -83,14 +110,16 @@ const Process = styled(FadeScaleIn)`
   align-items: center;
   width: 30%;
   height: 150px;
-  background-color: ${props => props.theme.darkColor};
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  z-index: 1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   @media (max-width: ${({ theme }) => theme.screenLg}) {
     width: 80%;
     margin: 20px 0;
+  }
+  &&& {
+    z-index: 100;
+    background-color: #fafafa;
   }
 `;
 

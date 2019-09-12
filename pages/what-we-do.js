@@ -19,9 +19,9 @@ const WhatWeDo = withTheme(() => {
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  color: ${props => props.theme.whiteColor};
+  color: ${props => props.theme.lightDarColor};
   transition: all ease 200ms;
-  background-color: ${({ theme }) => theme.lightDarkColor};
+  background-color: ${({ theme }) => theme.whiteColor};
   flex-direction: column;
 `;
 

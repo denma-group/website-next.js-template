@@ -9,8 +9,8 @@ const Develop = withTheme(props => {
     () => ({
       title: 'Develop',
       description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic',
-      subtitle: 'Our process',
+        'Our development team works at the edge of industry standards, always pushing for the best functionality. You are key in the development process, as you define what we create for you. Does your digital product require Maps integration? Seamless duality between web and mobile, website and app? That’s our specialty. And you, are our priority.',
+      subtitle: 'Our developing process looks like this',
       steps: [
         {
           title: '',
@@ -37,7 +37,7 @@ const Develop = withTheme(props => {
   return (
     <Container>
       <Layout data={data} />
-      <HookedParallax multiplierY={2} style={{ position: 'absolute', bottom: 0, left: 0 }}>
+      <HookedParallax multiplierY={0.4} style={{ position: 'absolute', top: 400, left: 20 }}>
         <Rocket fill={props.theme.brandRed} style={{ height: 150, width: 150 }} />
       </HookedParallax>
     </Container>

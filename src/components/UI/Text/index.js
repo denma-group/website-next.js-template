@@ -50,9 +50,8 @@ const Subtitle = ({ children, ...rest }) => (
 
 const StyledH1 = styled(H1)`
   &&& {
-    font-size: 42px;
-    line-height: 64px;
-    font-weight: 500;
+    font-size: 52px;
+    font-weight: 700;
     @media (max-width: ${({ theme }) => theme.screenMd}) {
       font-size: 36px;
       line-height: 58px;
@@ -77,25 +76,20 @@ const StyledH1 = styled(H1)`
 const StyledH2 = styled(H2)`
   &&& {
     font-size: 34px;
-    line-height: 46px;
-    ${({ css }) => css};
+    font-weight: 500;
     @media (max-width: ${({ theme }) => theme.screenMd}) {
       font-size: 28px;
-      line-height: 40px;
     }
     @media (max-width: ${({ theme }) => theme.screenSm}) {
       font-size: 22px;
-      line-height: 36px;
     }
     @media (max-width: ${({ theme }) => theme.screenXs}) {
       font-size: 18px;
-      line-height: 30px;
     }
     ${({ css }) => css};
     * {
       font-size: inherit;
       font-weight: inherit;
-      line-height: inherit;
     }
   }
 `;
@@ -103,18 +97,14 @@ const StyledH2 = styled(H2)`
 const StyledH3 = styled(H3)`
   &&& {
     font-size: 24px;
-    line-height: 36px;
     @media (max-width: ${({ theme }) => theme.screenMd}) {
       font-size: 22px;
-      line-height: 32px;
     }
     @media (max-width: ${({ theme }) => theme.screenSm}) {
       font-size: 20px;
-      line-height: 26px;
     }
     @media (max-width: ${({ theme }) => theme.screenXs}) {
       font-size: 18px;
-      line-height: 20px;
     }
     ${({ css }) => css};
     * {
