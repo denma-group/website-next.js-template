@@ -184,7 +184,7 @@ export default class MyApp extends App {
     return (
       <Container>
         <ThemeProvider theme={theme}>
-          <React.Fragment>
+          <>
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
             {/* Website */}
@@ -203,7 +203,7 @@ export default class MyApp extends App {
               </PageWrapper>
               <Footer />
             </NavbarProvider>
-          </React.Fragment>
+          </>
         </ThemeProvider>
       </Container>
     );
