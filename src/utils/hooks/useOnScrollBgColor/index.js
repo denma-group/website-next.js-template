@@ -126,7 +126,7 @@ export function useOnScrollBgColor(
     shouldSort,
     mixRatioChannels,
   } = {},
-  delay = 100
+  delay = 50
 ) {
 
   const listener = useCallback(
@@ -173,7 +173,14 @@ export function useOnScrollBgColor(
       }
     );
     return () => {
-      window.removeEventListener('scroll', listener);
+      window.removeEventListener(
+        'scroll',
+        listener,
+        {
+          capture: true,
+          passive: true
+        }
+      );
     };
   }, [listener]);
 }
