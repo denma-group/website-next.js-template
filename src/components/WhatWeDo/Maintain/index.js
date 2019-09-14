@@ -5,8 +5,7 @@ import Maintain from 'src/components/SVG/Icons/Maintain';
 import HookedParallax from 'src/components/UI/HookedParallax';
 
 const Develop = withTheme(props => {
-  const data = useMemo(
-    () => ({
+  const data = {
       title: 'Maintain',
       description:
         'After handing you the final version of your product, you can count on us to keep it in top form. If you have an existing digital product and wish to update or maintain it, Denma is the choice for you.',
@@ -29,16 +28,14 @@ const Develop = withTheme(props => {
         },
       ],
       bannerText: 'Keeping your product up to date.',
-      color: '#17bf63',
+      color: props.theme.greenColor,
       icons: [],
-    }),
-    []
-  );
+    };
   return (
     <Container>
       <Layout data={data} />
       <HookedParallax multiplierY={0.4} style={{ position: 'absolute', top: 400, left: 20 }}>
-        <Maintain fill="#17bf63" style={{ height: 150, width: 150 }} />
+        <Maintain fill={props.theme.greenColor} style={{ height: 150, width: 150 }} />
       </HookedParallax>
     </Container>
   );

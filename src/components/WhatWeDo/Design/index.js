@@ -5,35 +5,33 @@ import Brush from 'src/components/SVG/Icons/Brush';
 import HookedParallax from 'src/components/UI/HookedParallax';
 
 const Design = withTheme(props => {
-  const data = useMemo(
-    () => ({
-      title: 'Design',
-      description:
-        'Functionality with dazzling visuals. Guaranteed. You talk directly with our lead designer, and then we create your venture’s visuals.',
-      subtitle: 'This is how we create it',
-      steps: [
-        {
-          title: '',
-          description:
-            ' Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has',
-        },
-        {
-          title: '',
-          description:
-            ' Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has',
-        },
-        {
-          title: '',
-          description:
-            ' Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has',
-        },
-      ],
-      bannerText: 'Where we shape your ideas.',
-      color: props.theme.brandOrange,
-      icons: [],
-    }),
-    [props.theme.brandOrange]
-  );
+  const data = {
+    title: 'Design',
+    description:
+      'Functionality with dazzling visuals. Guaranteed. You talk directly with our lead designer, and then we create your venture’s visuals.',
+    subtitle: 'This is how we create it',
+    steps: [
+      {
+        title: '',
+        description:
+          ' Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has',
+      },
+      {
+        title: '',
+        description:
+          ' Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has',
+      },
+      {
+        title: '',
+        description:
+          ' Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has',
+      },
+    ],
+    bannerText: 'Where we shape your ideas.',
+    color: props.theme.brandOrange,
+    icons: [],
+  };
+  
   return (
     <Container>
       <Layout data={data} />

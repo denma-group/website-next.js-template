@@ -19,7 +19,7 @@ const WhatWeDo = withTheme(() => {
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  color: ${props => props.theme.lightDarColor};
+  color: ${props => props.theme.lightDarkColor};
   transition: all ease 200ms;
   background-color: ${({ theme }) => theme.whiteColor};
   flex-direction: column;
