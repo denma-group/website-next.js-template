@@ -27,7 +27,6 @@ const HelpYourVenture = props => {
         classNames="pitch"
         wrapper={Help}
         alignItems="center"
-        justifyContent="center"
         sm={12}
         md={7}
       >
@@ -49,7 +48,6 @@ const HelpYourVenture = props => {
         classNames="image"
         wrapper={ImageContainer}
         alignItems="center"
-        justifyContent="center"
         sm={12}
         md={5}
         animationMultiplier={2}

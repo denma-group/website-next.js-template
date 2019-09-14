@@ -74,6 +74,7 @@ const renderNavLinks = (navLinks = [], LinkComponent) => navLinks.map((link, ind
 
       return Wrapper ? (
         <Wrapper
+          key={key}
           {...wrapperProps}
         >
           {navLink}

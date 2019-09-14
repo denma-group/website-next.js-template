@@ -35,13 +35,11 @@ const Slide = props => {
     <Wrapper>
       <StyledRow
         alignItems="center"
-        justifyContent="center"
         spacing={5}
       >
         <InformationContainer
           slideNumber={slideNumber}
           alignItems="center"
-          justifyContent="center"
           sm={12}
           md={7}
         >
@@ -58,7 +56,6 @@ const Slide = props => {
         <ImageContainer
           slideNumber={slideNumber}
           alignItems="center"
-          justifyContent="center"
           sm={0}
           md={5}
         >
