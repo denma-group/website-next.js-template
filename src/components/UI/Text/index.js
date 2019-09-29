@@ -89,6 +89,7 @@ const StyledH2 = styled(H2)`
     * {
       font-size: inherit;
       font-weight: inherit;
+      line-height: inherit;
     }
   }
 `;
@@ -162,7 +163,7 @@ const StyledSpan = styled.span`
 `;
 
 const propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 H1.propTypes = propTypes;

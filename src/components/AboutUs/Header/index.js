@@ -47,26 +47,24 @@ const Header = props => {
             }
           `}
         >
-          Denma is a
+          Devoted to provide{' '}
           <Text.Span
             css={css`
               color: ${props.theme.brandDarkRed};
             `}
           >
-            {' '}
-            digital product agency
-          </Text.Span>{' '}
-          that focuses on
+            professional advice
+          </Text.Span>
+          , deliver{' '}
           <Text.Span
             css={css`
               color: ${props.theme.brandRed};
             `}
           >
-            {' '}
-            apartnerships
-          </Text.Span>{' '}
-          to deliver
-          <SpanText color={props.theme.brandOrange}> quality.</SpanText>
+            amazing software
+          </Text.Span>
+          , and take your company to the{' '}
+          <SpanText color={props.theme.brandOrange}>next level.</SpanText>
         </Text.H1>
         <GradientButton color1={props.theme.brandDarkRed} color2={props.theme.brandOrange}>
           Contact Us
@@ -134,7 +132,6 @@ const GradientButton = styled(Button)`
     width: 400px;
     margin-top: 20px;
     font-size: 42px;
-    margin-top: 40px;
 
     @media (max-width: ${({ theme }) => theme.screenMd}) {
       margin-top: 40px;
