@@ -4,7 +4,12 @@
     "baseUrl": ".",
     // Relative to "baseUrl"
     "paths": {
-      "*": ["*", "src/*", "pages/*", "static/*"]
+      "*": [
+        "*",
+        "src/*",
+        "pages/*",
+        "static/*"
+      ]
     }
   }
 }
